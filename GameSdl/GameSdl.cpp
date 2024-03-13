@@ -32,16 +32,15 @@ int main(int arc, char* argv[]){
         return 0;
     }
 
-    SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
+    
 
     MainObject human_object;
-    human_object.SetRect(300,420);
-    bool ret = human_object.LoadImg("human64x91.png");
+    human_object.SetRect(100,200);
+    bool ret = human_object.LoadImg("plane.png");
     if(!ret){
         return 0;
     }
 
-    human_object.Show(g_screen);
     
 
     while(!is_quit){
@@ -50,7 +49,12 @@ int main(int arc, char* argv[]){
                 is_quit = true;
                 break;
             }
+            human_object.HandleInputAction(g_even);
         }
+        SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
+        human_object.Show(g_screen);
+        human_object.HandleMove();
+
 
         if(SDL_Flip(g_screen) == -1) return 0;
     }

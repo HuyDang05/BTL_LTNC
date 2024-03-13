@@ -1,17 +1,17 @@
-﻿Build started 11/3/2024 10:07:28 PM.
-     1>Project "D:\Game Cpp\GameSdl\GameSdl\GameSdl.vcxproj" on node 2 (Build target(s)).
+﻿Build started 12/3/2024 8:36:37 PM.
+     1>Project "D:\GAME\GameSdl\GameSdl\GameSdl.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"D:\Game Cpp\GameSdl\sdl_lib\SDL2_ttf_2_0_11\include" /I"D:\Game Cpp\GameSdl\sdl_lib\SDL_mixer_1_2_12\include" /I"D:\Game Cpp\GameSdl\sdl_lib\SDL_image_1_2_4\include" /I"D:\Game Cpp\GameSdl\sdl_lib\SDL_1_2_15\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\GameSdl.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt GameSdl.cpp
-         GameSdl.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ID:\GAME\GameSdl\sdl_lib\SDL2_ttf_2_0_11\include /ID:\GAME\GameSdl\sdl_lib\SDL_mixer_1_2_12\include /ID:\GAME\GameSdl\sdl_lib\SDL_image_1_2_4\include /ID:\GAME\GameSdl\sdl_lib\SDL_1_2_15\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\GameSdl.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt MainObject.cpp
+         MainObject.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Game Cpp\GameSdl\Debug\GameSdl.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Game Cpp\GameSdl\sdl_lib\SDL2_ttf_2_0_11\lib\x86" /LIBPATH:"D:\Game Cpp\GameSdl\sdl_lib\SDL_mixer_1_2_12\lib\x86" /LIBPATH:"D:\Game Cpp\GameSdl\sdl_lib\SDL_image_1_2_4\lib" /LIBPATH:"D:\Game Cpp\GameSdl\sdl_lib\SDL_1_2_15\lib\x86" SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib SDL_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Game Cpp\GameSdl\Debug\GameSdl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Game Cpp\GameSdl\Debug\GameSdl.lib" /MACHINE:X86 Debug\BaseObject.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GAME\GameSdl\Debug\GameSdl.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL2_ttf_2_0_11\lib\x86 /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL_mixer_1_2_12\lib\x86 /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL_image_1_2_4\lib /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL_1_2_15\lib\x86 SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib SDL_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GAME\GameSdl\Debug\GameSdl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GAME\GameSdl\Debug\GameSdl.lib" /MACHINE:X86 Debug\BaseObject.obj
          Debug\Common_Function.obj
          Debug\GameSdl.obj
          Debug\MainObject.obj
          Debug\stdafx.obj
-         GameSdl.vcxproj -> D:\Game Cpp\GameSdl\Debug\GameSdl.exe
-     1>Done Building Project "D:\Game Cpp\GameSdl\GameSdl\GameSdl.vcxproj" (Build target(s)).
+         GameSdl.vcxproj -> D:\GAME\GameSdl\Debug\GameSdl.exe
+     1>Done Building Project "D:\GAME\GameSdl\GameSdl\GameSdl.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.40
+Time Elapsed 00:00:00.81
