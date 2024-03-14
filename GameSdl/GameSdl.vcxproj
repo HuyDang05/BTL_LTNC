@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BulletObject.h" />
     <ClInclude Include="Common_Function.h" />
     <ClInclude Include="MainObject.h" />
     <ClInclude Include="stdafx.h" />
@@ -90,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BulletObject.cpp" />
     <ClCompile Include="Common_Function.cpp" />
     <ClCompile Include="GameSdl.cpp" />
     <ClCompile Include="MainObject.cpp" />

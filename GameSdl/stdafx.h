@@ -12,6 +12,7 @@
 #include "Common_Function.h"
 #include "BaseObject.h"
 #include "MainObject.h"
+#include "BulletObject.h"
 
 
 
