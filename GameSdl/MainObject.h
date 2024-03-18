@@ -4,10 +4,11 @@
 #include "Common_Function.h"
 #include "BaseObject.h"
 #include "BulletObject.h"
+#include "stdafx.h"
 #include <vector>
 
-#define WIDTH_MAIN_OBJECT 80
-#define HEIGHT_MAIN_OBJECT 46
+#define WIDTH_MAIN_OBJECT 64
+#define HEIGHT_MAIN_OBJECT 36
 
 class MainObject : public BaseObject
 {public :

@@ -55,7 +55,26 @@ int main(int arc, char* argv[]){
         human_object.Show(g_screen);
         human_object.HandleMove();
 
-
+        for(int i = 0; i < human_object.GetBulletList().size(); i++){
+            std::vector<BulletObject*> bullet_list  = human_object.GetBulletList();
+            BulletObject* p_bullet = bullet_list.at(i);
+            if(p_bullet != NULL){
+                if(p_bullet->get_is_move()){
+                    p_bullet->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+                    p_bullet->Show(g_screen);
+                    
+                }
+                else{
+                    if(p_bullet != NULL){
+                        bullet_list.erase(bullet_list.begin()+i);
+                        human_object.SetBulletList(bullet_list);
+                        
+                        delete p_bullet;
+                        p_bullet = NULL;
+                    }
+                }
+            }
+          }
         if(SDL_Flip(g_screen) == -1) return 0;
     }
     SDLCommonFunc::Cleanup();

@@ -16,6 +16,15 @@ BulletObject::~BulletObject(){
     ;
 }
 
+void BulletObject::HandleMove(const int& x_border, const int& y_border){
+    if(is_move_ == true){
+    rect_.x += 20;
+    if(rect_.x > x_border){
+        is_move_ = false;
+    }
+    }
+}
+
 void BulletObject::HandleInputAction(SDL_Event events){
 
 }
