@@ -7,8 +7,8 @@
 #include "stdafx.h"
 #include <vector>
 
-#define WIDTH_MAIN_OBJECT 64
-#define HEIGHT_MAIN_OBJECT 36
+#define WIDTH_MAIN_OBJECT 80
+#define HEIGHT_MAIN_OBJECT 40
 
 class MainObject : public BaseObject
 {public :

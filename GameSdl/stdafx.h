@@ -13,6 +13,7 @@
 #include "BaseObject.h"
 #include "MainObject.h"
 #include "BulletObject.h"
+#include "ThreatObject.h"
 
 
 

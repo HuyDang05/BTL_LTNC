@@ -36,12 +36,12 @@
     <ClInclude Include="BulletObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ThreatObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSdl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Common_Function.cpp">
@@ -54,6 +54,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BulletObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreatObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -16,6 +16,7 @@ MainObject::~MainObject()
 
 void MainObject:: HandleInputAction(SDL_Event events){
     if(events.type == SDL_KEYDOWN){
+      
         switch(events.key.keysym.sym){
         case SDLK_w:
             y_val_ -= HEIGHT_MAIN_OBJECT/8;
@@ -29,6 +30,18 @@ void MainObject:: HandleInputAction(SDL_Event events){
         case SDLK_d:
             x_val_ += WIDTH_MAIN_OBJECT/8;
             break;
+        
+
+        case SDLK_k: break;
+            
+        case SDLK_l: break;
+            
+            
+         
+        
+
+
+
             default:
                 break;
         }
@@ -64,8 +77,6 @@ void MainObject:: HandleInputAction(SDL_Event events){
         p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
         p_bullet->set_is_move(true);
         p_bullet_list_.push_back(p_bullet);
-
-        
 
     }
     else if(events.type == SDL_MOUSEBUTTONUP){
