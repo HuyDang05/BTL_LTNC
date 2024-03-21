@@ -57,6 +57,10 @@ int main(int arc, char* argv[]){
     p_threat->SetRect(SCREEN_WIDTH, rand_y);
     p_threat->set_x_val(5);
 
+    BulletObject * p_bullet = new BulletObject();
+
+       p_threat->InitBullet(p_bullet);
+
     
 
     while(!is_quit){
@@ -95,6 +99,8 @@ int main(int arc, char* argv[]){
         // Present threat
         p_threat->Show(g_screen);
         p_threat->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+     
+        p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
         if(SDL_Flip(g_screen) == -1) return 0;

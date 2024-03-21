@@ -23,6 +23,7 @@ public:
     ~BulletObject();
     void HandleInputAction(SDL_Event events);
     void HandleMove(const int& x_border, const int& y_border);
+    void HandleThreatMove();
 
     int get_type() const {return bullet_type_;};
     void set_type(const int& type){ bullet_type_ = type;};

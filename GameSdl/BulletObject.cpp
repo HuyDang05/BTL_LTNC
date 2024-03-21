@@ -25,6 +25,16 @@ void BulletObject::HandleMove(const int& x_border, const int& y_border){
     }
 }
 
+
+
+void BulletObject::HandleThreatMove(){
+
+    rect_.x -= 10;
+    if(rect_.x < 0){
+        is_move_ = false;
+    }
+ }
+
 void BulletObject::HandleInputAction(SDL_Event events){
 
 }

@@ -19,20 +19,39 @@ ThreatObject::~ThreatObject(){
 
 };
 
-//void ThreatObject::InitBullet(BulletObject* p_bullet){
-//    if(p_bullet){
-//        bool res = p_bullet->LoadImg("");
-//        if(res){
-//            p_bullet->set_is_move(true);
-//            p_bullet->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
-//            p_bullet->set_type(BulletObject::LASER);
-//            p_bullet->SetRect(rect_.x, rect_.y + rect_.h*0.3);
-//            p_bullet_list.push_back(p_bullet);
-//        }
-//    }
-//}
+void ThreatObject::InitBullet(BulletObject* p_bullet){
+    if(p_bullet){
+        bool res = p_bullet->LoadImg("bl8.png");
+        if(res){
+            p_bullet->set_is_move(true);
+            p_bullet->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
+            p_bullet->set_type(BulletObject::LASER);
+            p_bullet->SetRect(rect_.x, rect_.y + rect_.h*0.3);
+            p_bullet_list_.push_back(p_bullet);
+        }
+    }
+}
 
    void ThreatObject::MakeBullet(SDL_Surface* des, const int& x_limit, const int& y_limit){
+       for(int i = 0; i < p_bullet_list_.size(); i++){
+
+           BulletObject* p_bullet = p_bullet_list_.at(i);
+           if(p_bullet){
+               if(p_bullet->get_is_move()){
+                   p_bullet->Show(des);
+                   p_bullet->HandleThreatMove();
+               }
+               else{
+                   p_bullet->set_is_move(true);
+                   p_bullet->SetRect(rect_.x, rect_.y + rect_.h * 0.5);
+               }
+           }
+       }
+
+
+
+
+   }
 
 
 void ThreatObject::HandleMove(const int& x_border, const int& y_border){
