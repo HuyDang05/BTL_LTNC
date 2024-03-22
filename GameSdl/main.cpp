@@ -37,13 +37,16 @@ int main(int arc, char* argv[]){
     //make Mainobject
     MainObject human_object;
     human_object.SetRect(100,200);
-    bool ret = human_object.LoadImg("ob5.png");
+    bool ret = human_object.LoadImg("a31.png");
     if(!ret){
         return 0;
     }
 
     //make Threatobject
-    ThreatObject* p_threat = new ThreatObject();
+    ThreatObject* p_threats = new ThreatObject[THREAT];
+    for(int i = 0; i < THREAT; i++){
+        ThreatObject* p_threat = (p_threats + i);
+        if(p_threat){
     bool res = p_threat->LoadImg("ob3.png");
     if(res == false) return 0;
 
@@ -54,12 +57,20 @@ int main(int arc, char* argv[]){
          rand_y = SCREEN_HEIGHT*0.25;
     }
     
-    p_threat->SetRect(SCREEN_WIDTH, rand_y);
+    p_threat->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
+ 
     p_threat->set_x_val(5);
 
     BulletObject * p_bullet = new BulletObject();
 
        p_threat->InitBullet(p_bullet);
+
+       
+
+
+        }}
+
+
 
     
 
@@ -97,14 +108,23 @@ int main(int arc, char* argv[]){
           }
 
         // Present threat
-        p_threat->Show(g_screen);
+        for(int i = 0; i < THREAT; i++){
+            ThreatObject* p_threat = (p_threats + i);
+            if(p_threat){
+            p_threat->Show(g_screen);
         p_threat->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
      
         p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+            }}
+
+
 
 
         if(SDL_Flip(g_screen) == -1) return 0;
     }
+
+    delete [] p_threats;
+
     SDLCommonFunc::Cleanup();
     SDL_Quit();
 

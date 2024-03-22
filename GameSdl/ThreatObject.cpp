@@ -15,6 +15,16 @@ ThreatObject::ThreatObject(){
 
 
 ThreatObject::~ThreatObject(){
+    if(p_bullet_list_.size() > 0){
+        for(int i = 0; i < p_bullet_list_.size(); i++){
+            BulletObject* p_bullet = p_bullet_list_.at(i);
+            if(p_bullet != NULL){
+                delete p_bullet;
+                p_bullet = NULL;
+            }
+        }
+        p_bullet_list_.clear();
+    }
 
 
 };

@@ -14,6 +14,8 @@ const int SCREEN_WIDTH = 1360;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
 
+
+
 static SDL_Surface* g_screen = NULL;
 static SDL_Surface* g_bkground = NULL;
 static SDL_Event g_even;

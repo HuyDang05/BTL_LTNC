@@ -9,6 +9,8 @@
 #define WIDTH_THREAT 80
 #define HEIGHT_THREAT 33
 
+const int THREAT = 5;
+
 class ThreatObject : public BaseObject{
 public:
     ThreatObject();
