@@ -37,7 +37,7 @@ int main(int arc, char* argv[]){
     //make Mainobject
     MainObject human_object;
     human_object.SetRect(100,200);
-    bool ret = human_object.LoadImg("a31.png");
+    bool ret = human_object.LoadImg("ob6.png");
     if(!ret){
         return 0;
     }
@@ -82,32 +82,17 @@ int main(int arc, char* argv[]){
             }
             human_object.HandleInputAction(g_even);
         }
+        //Apply background
         SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
+
+        //Implement main
         human_object.Show(g_screen);
         human_object.HandleMove();
+        human_object.MakeBullet(g_screen);
 
-        for(int i = 0; i < human_object.GetBulletList().size(); i++){
-            std::vector<BulletObject*> bullet_list  = human_object.GetBulletList();
-            BulletObject* p_bullet = bullet_list.at(i);
-            if(p_bullet != NULL){
-                if(p_bullet->get_is_move()){
-                    p_bullet->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
-                    p_bullet->Show(g_screen);
-                    
-                }
-                else{
-                    if(p_bullet != NULL){
-                        bullet_list.erase(bullet_list.begin()+i);
-                        human_object.SetBulletList(bullet_list);
-                        
-                        delete p_bullet;
-                        p_bullet = NULL;
-                    }
-                }
-            }
-          }
+        
 
-        // Present threat
+        // Implement threat object
         for(int i = 0; i < THREAT; i++){
             ThreatObject* p_threat = (p_threats + i);
             if(p_threat){
@@ -119,7 +104,7 @@ int main(int arc, char* argv[]){
 
 
 
-
+        //Update screen
         if(SDL_Flip(g_screen) == -1) return 0;
     }
 

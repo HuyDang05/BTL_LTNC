@@ -40,6 +40,7 @@ void MainObject:: HandleInputAction(SDL_Event events){
             p_bullet->set_type(BulletObject::LASER);
             p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
             p_bullet->set_is_move(true);
+            p_bullet->set_x_val(20);
             p_bullet_list_.push_back(p_bullet);
             break;
             
@@ -49,6 +50,7 @@ void MainObject:: HandleInputAction(SDL_Event events){
             p_bullet->set_type(BulletObject::DART);
             p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
             p_bullet->set_is_move(true);
+            p_bullet->set_x_val(20);
             p_bullet_list_.push_back(p_bullet);
             break;
             
@@ -93,6 +95,28 @@ void MainObject:: HandleInputAction(SDL_Event events){
     
 }
 
+void MainObject::MakeBullet(SDL_Surface* g_screen){
+
+    for(int i = 0; i < p_bullet_list_.size(); i++){
+            
+            BulletObject* p_bullet = p_bullet_list_.at(i);
+            if(p_bullet != NULL){
+                if(p_bullet->get_is_move()){
+                    p_bullet->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+                    p_bullet->Show(g_screen);
+                    
+                }
+                else{
+                    if(p_bullet != NULL){
+                        p_bullet_list_.erase(p_bullet_list_.begin()+i);
+
+                           delete p_bullet;
+                        p_bullet = NULL;
+                    }
+                }
+            }
+          }
+}
 void MainObject:: HandleMove(){
     rect_.x += x_val_;
     if(rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH){

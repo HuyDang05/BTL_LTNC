@@ -37,12 +37,13 @@ void ThreatObject::InitBullet(BulletObject* p_bullet){
             p_bullet->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
             p_bullet->set_type(BulletObject::LASER);
             p_bullet->SetRect(rect_.x, rect_.y + rect_.h*0.3);
+            p_bullet->set_x_val(10);
             p_bullet_list_.push_back(p_bullet);
         }
     }
 }
 
-   void ThreatObject::MakeBullet(SDL_Surface* des, const int& x_limit, const int& y_limit){
+void ThreatObject::MakeBullet(SDL_Surface* des, const int& x_limit, const int& y_limit){
        for(int i = 0; i < p_bullet_list_.size(); i++){
 
            BulletObject* p_bullet = p_bullet_list_.at(i);
@@ -63,13 +64,14 @@ void ThreatObject::InitBullet(BulletObject* p_bullet){
 
    }
 
+ 
 
 void ThreatObject::HandleMove(const int& x_border, const int& y_border){
     rect_.x -= x_val_;
     if(rect_.x < 0){
         rect_.x = SCREEN_WIDTH;
         int rand_y = rand()%500;
-        if(rand_y > SCREEN_HEIGHT-200){
+        if(rand_y > SCREEN_HEIGHT-UNDER_BOUND){
             rand_y = SCREEN_HEIGHT*0.25;
         }
         rect_.y = rand_y;

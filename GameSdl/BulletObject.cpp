@@ -18,7 +18,7 @@ BulletObject::~BulletObject(){
 
 void BulletObject::HandleMove(const int& x_border, const int& y_border){
     if(is_move_ == true){
-    rect_.x += 20;
+        rect_.x += x_val_;
     if(rect_.x > x_border){
         is_move_ = false;
     }
@@ -29,7 +29,7 @@ void BulletObject::HandleMove(const int& x_border, const int& y_border){
 
 void BulletObject::HandleThreatMove(){
 
-    rect_.x -= 8;
+    rect_.x -= x_val_;
     if(rect_.x < 0){
         is_move_ = false;
     }
