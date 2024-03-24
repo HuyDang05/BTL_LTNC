@@ -21,6 +21,8 @@ bool Init(){
 
 
 int main(int arc, char* argv[]){
+    bool is_move_screen = true;
+    double bkgn_x = 0;
     bool is_quit = false;
     
     if(Init() == false){
@@ -28,7 +30,7 @@ int main(int arc, char* argv[]){
     }
 
 
-    g_bkground = SDLCommonFunc::LoadImage("bk34.png");
+    g_bkground = SDLCommonFunc::LoadImage("bk.png");
     if(g_bkground == NULL){
         return 0;
     }
@@ -81,14 +83,31 @@ int main(int arc, char* argv[]){
                 break;
             }
             human_object.HandleInputAction(g_even);
-        }
+        } 
         //Apply background
-        SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
+        //SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
+        
+        if(is_move_screen == true){
+        bkgn_x -= 0.75;
+        if(bkgn_x <= -(WIDTH_BACKGROUND - SCREEN_WIDTH)){
+            is_move_screen = false;
+        }
+        else{
+        SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
+        }
+        }
+        else{
+            SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
+        }
+
+
+
 
         //Implement main
         human_object.Show(g_screen);
         human_object.HandleMove();
         human_object.MakeBullet(g_screen);
+
 
         
 
