@@ -104,8 +104,8 @@ int main(int arc, char* argv[]){
 
 
         //Implement main
-        human_object.Show(g_screen);
         human_object.HandleMove();
+        human_object.Show(g_screen);
         human_object.MakeBullet(g_screen);
 
 
@@ -115,11 +115,39 @@ int main(int arc, char* argv[]){
         for(int i = 0; i < THREAT; i++){
             ThreatObject* p_threat = (p_threats + i);
             if(p_threat){
+            p_threat->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
             p_threat->Show(g_screen);
-        p_threat->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
-     
-        p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
-            }}
+            p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+            if(SDL_Flip(g_screen) == -1) return 0;
+
+            //Check collision thr and main
+            bool is_col = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
+            if(is_col){
+               if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
+                   delete [] p_threats;
+                    SDLCommonFunc::Cleanup();
+                    SDL_Quit();
+                    return 0;
+               }
+            }
+
+            std::vector<BulletObject*> bullet_list = human_object.GetBulletList();
+            for(int j = 0; j < bullet_list.size(); j++){
+                BulletObject* p_bullet = bullet_list.at(j);
+                if(p_bullet != NULL){
+                    bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_threat->GetRect());
+                    if(res_col){
+                        p_threat->Renew(SCREEN_WIDTH + i*800);
+                        human_object.DestroyBullet(j);
+                    }
+                }
+            }
+            }
+        }
+        
+          
+       
 
 
 

@@ -84,3 +84,22 @@ void ThreatObject::HandleInputAction(SDL_Event events){
 
 
 }
+
+void ThreatObject::Renew(const int& x_border){
+    rect_.x = x_border;
+        int rand_y = rand()%500;
+        if(rand_y > SCREEN_HEIGHT-UNDER_BOUND){
+            rand_y = SCREEN_HEIGHT*0.25;
+        }
+        rect_.y = rand_y;
+        for(int i = 0; i < p_bullet_list_.size(); i++){
+            BulletObject* p_bullet = p_bullet_list_.at(i);
+            if(p_bullet){
+                ResetBullet(p_bullet);
+            }
+        }
+}
+
+void ThreatObject::ResetBullet(BulletObject* p_bullet){
+    p_bullet->SetRect(rect_.x, rect_.y + rect_.h*0.3);
+}

@@ -127,3 +127,20 @@ void MainObject:: HandleMove(){
         rect_.y -= y_val_;
     }
 }
+
+void MainObject::DestroyBullet(const int idx){
+    
+    
+    for(int i = 0; i < p_bullet_list_.size(); i++){
+        if(idx < p_bullet_list_.size()){
+        BulletObject* p_bullet = p_bullet_list_.at(idx);
+        p_bullet_list_.erase(p_bullet_list_.begin() + idx);
+
+        if(p_bullet != NULL){
+            delete p_bullet;
+            p_bullet = NULL;
+        }
+    }
+  }
+}
+

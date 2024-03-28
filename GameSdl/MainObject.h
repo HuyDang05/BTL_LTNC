@@ -20,11 +20,13 @@ class MainObject : public BaseObject
     void SetBulletList(std:: vector<BulletObject*> bullet_list) {p_bullet_list_ = bullet_list;}
     std::vector<BulletObject*> GetBulletList() const {return p_bullet_list_;}
     void MakeBullet(SDL_Surface* g_screen);
+    void MainObject::DestroyBullet(const int idx);
 private:
     int x_val_;
     int y_val_;
 
     std::vector<BulletObject*> p_bullet_list_;
 };
+
 
 #endif

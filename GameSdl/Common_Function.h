@@ -27,6 +27,7 @@ namespace SDLCommonFunc{
     SDL_Surface* LoadImage(std:: string file_path);
     void ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y);
     void Cleanup();
+    bool IsCollision(const SDL_Rect& object_a, const SDL_Rect& object_b);
 }
 
 
