@@ -39,6 +39,9 @@
     <ClInclude Include="ThreatObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExplosionObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,6 +63,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ThreatObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
