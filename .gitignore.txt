@@ -1,0 +1,4 @@
+GameSdl.sdf
+main.sdf
+main.v11.suo
+GameSdl.v11.suo

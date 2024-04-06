@@ -25,6 +25,15 @@ void SDLCommonFunc::ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int 
     SDL_BlitSurface(scr, NULL, des, &offset);
 }
 
+void SDLCommonFunc::ApplySurfaceVid(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip, int x, int y){
+    SDL_Rect offset;
+    offset.x = x;
+    offset.y = y;
+    SDL_BlitSurface(scr, clip, des, &offset);
+
+
+}
+
 
 void SDLCommonFunc::Cleanup(){
     SDL_FreeSurface(g_screen);

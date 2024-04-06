@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "MainObject.h"
 #include "ThreatObject.h"
+#include "ExplosionObject.h"
 
 
 
@@ -43,6 +44,13 @@ int main(int arc, char* argv[]){
     if(!ret){
         return 0;
     }
+
+    //make explosion object
+    ExplosionObject exp_main;
+    ret = exp_main.LoadImg("expmain.png");
+    exp_main.set_clip();
+    if(ret == false) return 0;
+
 
     //make Threatobject
     ThreatObject* p_threats = new ThreatObject[THREAT];
@@ -124,6 +132,19 @@ int main(int arc, char* argv[]){
             //Check collision thr and main
             bool is_col = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
             if(is_col){
+                for(int ex = 0; ex < 4; ex++){
+                    int x_pos = (human_object.GetRect().x + human_object.GetRect().w*0.5)- EX_WIDTH*0.5;
+                    int y_pos = (human_object.GetRect().y + human_object.GetRect().h*0.5)- EX_HEIGHT*0.5;
+
+                    exp_main.set_frame(ex);
+                    exp_main.SetRect(x_pos, y_pos);
+                    exp_main.ShowEx(g_screen);
+
+                    SDL_Delay(100);
+                    //Update screen
+                   if(SDL_Flip(g_screen) == -1) return 0;
+                }
+
                if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
                    delete [] p_threats;
                     SDLCommonFunc::Cleanup();
