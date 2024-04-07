@@ -15,7 +15,7 @@ class MainObject : public BaseObject
     MainObject();
     ~MainObject();
 
-    void HandleInputAction(SDL_Event events);
+    void HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]);
     void HandleMove();
     void SetBulletList(std:: vector<BulletObject*> bullet_list) {p_bullet_list_ = bullet_list;}
     std::vector<BulletObject*> GetBulletList() const {return p_bullet_list_;}

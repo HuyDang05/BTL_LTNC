@@ -14,7 +14,7 @@ MainObject::~MainObject()
     ;
 }
 
-void MainObject:: HandleInputAction(SDL_Event events){
+void MainObject:: HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]){
     BulletObject* p_bullet = new BulletObject();
     if(events.type == SDL_KEYDOWN){
       
@@ -38,6 +38,7 @@ void MainObject:: HandleInputAction(SDL_Event events){
             p_bullet->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
             p_bullet->LoadImg("laserbl.png");
             p_bullet->set_type(BulletObject::LASER);
+            Mix_PlayChannel(-1, bullet_sound[0], 0);
             p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
             p_bullet->set_is_move(true);
             p_bullet->set_x_val(20);
@@ -48,6 +49,7 @@ void MainObject:: HandleInputAction(SDL_Event events){
             p_bullet->SetWidthHeight(WIDTH_DART, HEIGHT_DART);
             p_bullet->LoadImg("dartbl.png");
             p_bullet->set_type(BulletObject::DART);
+             Mix_PlayChannel(-1, bullet_sound[1], 0);
             p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
             p_bullet->set_is_move(true);
             p_bullet->set_x_val(20);

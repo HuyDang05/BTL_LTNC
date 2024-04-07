@@ -23,6 +23,11 @@ static SDL_Surface* g_bkground = NULL;
 static SDL_Event g_even;
 
 
+static Mix_Chunk* g_sound_bullet[2];
+static Mix_Chunk* g_sound_exp[2];
+
+
+
 namespace SDLCommonFunc{
     SDL_Surface* LoadImage(std:: string file_path);
     void ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y);

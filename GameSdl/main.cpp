@@ -16,6 +16,16 @@ bool Init(){
     g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
 
     if(g_screen == NULL) return false;
+
+    if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1) return false;
+
+    //Load file wav audio
+    g_sound_bullet[0] = Mix_LoadWAV("laser.wav");
+    g_sound_bullet[1] = Mix_LoadWAV("gun.wav");
+    g_sound_exp[0] = Mix_LoadWAV("explosion.wav");
+    g_sound_exp[1] = Mix_LoadWAV("main_explosion.wav");
+    
+    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL ) return false;
     return true;
 }
 
@@ -96,7 +106,7 @@ int main(int arc, char* argv[]){
                 is_quit = true;
                 break;
             }
-            human_object.HandleInputAction(g_even);
+            human_object.HandleInputAction(g_even, g_sound_bullet);
         } 
         //Apply background
         //SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
@@ -166,7 +176,7 @@ int main(int arc, char* argv[]){
                     //Update screen
                    if(SDL_Flip(g_screen) == -1) return 0;
                 }
-
+                Mix_PlayChannel(-1, g_sound_exp[1], 0);
                if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
                    delete [] p_threats;
                     SDLCommonFunc::Cleanup();
@@ -196,10 +206,11 @@ int main(int arc, char* argv[]){
 
                         p_threat->Renew(SCREEN_WIDTH + i*800);
                         human_object.DestroyBullet(j);
+                        Mix_PlayChannel(-1, g_sound_exp[0], 0);
                     }
                 }
             }
-            }
+          }
         }
         
           
