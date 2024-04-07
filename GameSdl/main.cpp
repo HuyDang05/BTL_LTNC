@@ -45,10 +45,16 @@ int main(int arc, char* argv[]){
         return 0;
     }
 
-    //make explosion object
+    //make explosion mainobject
     ExplosionObject exp_main;
     ret = exp_main.LoadImg("expmain.png");
     exp_main.set_clip();
+    if(ret == false) return 0;
+
+    //make explosion threatobject
+    ExplosionObject exp_threats;
+    ret = exp_threats.LoadImg("expmain.png");
+    exp_threats.set_clip();
     if(ret == false) return 0;
 
 
@@ -127,11 +133,27 @@ int main(int arc, char* argv[]){
             p_threat->Show(g_screen);
             p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-            if(SDL_Flip(g_screen) == -1) return 0;
+            //Check collision threats bullet with main object
+            bool is_col1 = false;
+            std::vector<BulletObject*> bullet_arr = p_threat->GetBulletList();
+            for(int b = 0; b < bullet_arr.size(); b++){
+                BulletObject* p_bullet = bullet_arr.at(b);
+                if(p_bullet){
+                    is_col1 = SDLCommonFunc::IsCollision(p_bullet->GetRect(),human_object.GetRect());
+                    if(is_col1 == true){
+                        p_threat->ResetBullet(p_bullet);
+                        break;
+                    }
+                }
+            }
+             
+
+
+           
 
             //Check collision thr and main
             bool is_col = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
-            if(is_col){
+            if(is_col || is_col1){
                 for(int ex = 0; ex < 4; ex++){
                     int x_pos = (human_object.GetRect().x + human_object.GetRect().w*0.5)- EX_WIDTH*0.5;
                     int y_pos = (human_object.GetRect().y + human_object.GetRect().h*0.5)- EX_HEIGHT*0.5;
@@ -159,6 +181,19 @@ int main(int arc, char* argv[]){
                 if(p_bullet != NULL){
                     bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_threat->GetRect());
                     if(res_col){
+                        for(int t = 0; t < 4; t++){
+                            int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
+                            int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
+
+                            exp_threats.set_frame(t);
+                            exp_threats.SetRect(x_pos, y_pos);
+                            exp_threats.ShowEx(g_screen);
+
+                            //Update screen
+                            if(SDL_Flip(g_screen) == -1) return 0;
+
+                        }
+
                         p_threat->Renew(SCREEN_WIDTH + i*800);
                         human_object.DestroyBullet(j);
                     }
