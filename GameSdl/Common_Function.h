@@ -16,7 +16,7 @@ const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_WIDTH = 1360;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
-const int SPEED_SCREEN = 0.75;
+const int SPEED_SCREEN = 1;
 
 //Main
 const int POS_X_START_MAIN_OBJ  = 100;
@@ -40,6 +40,7 @@ static SDL_Event g_even;
 
 static Mix_Chunk* g_sound_bullet[2];
 static Mix_Chunk* g_sound_exp[2];
+static Mix_Chunk* g_sound_bgr[1];
 
 
 

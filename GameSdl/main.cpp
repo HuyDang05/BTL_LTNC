@@ -24,8 +24,10 @@ bool Init(){
     g_sound_bullet[1] = Mix_LoadWAV("gun.wav");
     g_sound_exp[0] = Mix_LoadWAV("explosion.wav");
     g_sound_exp[1] = Mix_LoadWAV("main_explosion.wav");
+    g_sound_bgr[0] = Mix_LoadWAV("musicgame.wav");
+
     
-    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL ) return false;
+    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL) return false;
     return true;
 }
 
@@ -99,8 +101,9 @@ int main(int arc, char* argv[]){
 
 
     
-
+    Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     while(!is_quit){
+        
         while(SDL_PollEvent(&g_even)){
             if(g_even.type == SDL_QUIT){
                 is_quit = true;
