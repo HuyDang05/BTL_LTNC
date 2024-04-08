@@ -20,16 +20,16 @@ void MainObject:: HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]
       
         switch(events.key.keysym.sym){
         case SDLK_w:
-            y_val_ -= HEIGHT_MAIN_OBJECT/10;
+            y_val_ -= SPEED_MAIN_OBJECT;
             break;
         case SDLK_s:
-            y_val_ += HEIGHT_MAIN_OBJECT/10;
+            y_val_ += SPEED_MAIN_OBJECT;
             break;
         case SDLK_a:
-            x_val_ -= WIDTH_MAIN_OBJECT/10;
+            x_val_ -= SPEED_MAIN_OBJECT;
              break;
         case SDLK_d:
-            x_val_ += WIDTH_MAIN_OBJECT/10;
+            x_val_ += SPEED_MAIN_OBJECT;
             break;
         
 
@@ -41,7 +41,7 @@ void MainObject:: HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]
             Mix_PlayChannel(-1, bullet_sound[0], 0);
             p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
             p_bullet->set_is_move(true);
-            p_bullet->set_x_val(20);
+            p_bullet->set_x_val(SPEED_BULLET_MAIN);
             p_bullet_list_.push_back(p_bullet);
             break;
             
@@ -52,7 +52,7 @@ void MainObject:: HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]
              Mix_PlayChannel(-1, bullet_sound[1], 0);
             p_bullet->SetRect(this->rect_.x + this-> rect_.w - 20, this->rect_.y + this->rect_.h*0.5);
             p_bullet->set_is_move(true);
-            p_bullet->set_x_val(20);
+            p_bullet->set_x_val(SPEED_BULLET_MAIN);
             p_bullet_list_.push_back(p_bullet);
             break;
             
@@ -63,13 +63,13 @@ void MainObject:: HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]
     else if(events.type == SDL_KEYUP){
         switch (events.key.keysym.sym)
         {
-        case SDLK_w: y_val_ += HEIGHT_MAIN_OBJECT/10;
+        case SDLK_w: y_val_ += SPEED_MAIN_OBJECT;
             break;
-        case SDLK_s:  y_val_ -= HEIGHT_MAIN_OBJECT/10;
+        case SDLK_s:  y_val_ -= SPEED_MAIN_OBJECT;
             break;
-        case SDLK_a: x_val_ += WIDTH_MAIN_OBJECT/10;
+        case SDLK_a: x_val_ += SPEED_MAIN_OBJECT;
             break;
-        case SDLK_d: x_val_ -= WIDTH_MAIN_OBJECT/10;
+        case SDLK_d: x_val_ -= SPEED_MAIN_OBJECT;
             break;
 
         }

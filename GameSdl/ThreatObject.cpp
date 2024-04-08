@@ -37,7 +37,7 @@ void ThreatObject::InitBullet(BulletObject* p_bullet){
             p_bullet->SetWidthHeight(WIDTH_LASER, HEIGHT_LASER);
             p_bullet->set_type(BulletObject::LASER);
             p_bullet->SetRect(rect_.x, rect_.y + rect_.h*0.3);
-            p_bullet->set_x_val(10);
+            p_bullet->set_x_val(SPEED_BULLET_THREAT);
             p_bullet_list_.push_back(p_bullet);
         }
     }

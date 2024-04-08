@@ -10,11 +10,26 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
+//SCREEN
 const int WIDTH_BACKGROUND = 4800;
 const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_WIDTH = 1360;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
+const int SPEED_SCREEN = 0.75;
+
+//Main
+const int POS_X_START_MAIN_OBJ  = 100;
+const int POS_Y_START_MAIN_OBJ  = 200;
+const int SPEED_MAIN_OBJECT     = 10;
+const int SPEED_BULLET_MAIN     = 20;
+
+//Threat
+const int THREAT = 3;
+const int SPEED_THREAT = 5;
+const int SPEED_BULLET_THREAT = 10;
+const int UNDER_BOUND = 200;
+const int VAL_OFFSET_START_POST_THREATS = 800;
 
 
 

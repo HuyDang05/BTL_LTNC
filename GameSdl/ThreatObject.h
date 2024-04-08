@@ -9,8 +9,7 @@
 #define WIDTH_THREAT 80
 #define HEIGHT_THREAT 33
 
-const int UNDER_BOUND = 200;
-const int THREAT = 3;
+
 
 class ThreatObject : public BaseObject{
 public:

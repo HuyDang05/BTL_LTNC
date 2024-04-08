@@ -49,7 +49,7 @@ int main(int arc, char* argv[]){
     
     //make Mainobject
     MainObject human_object;
-    human_object.SetRect(100,200);
+    human_object.SetRect(POS_X_START_MAIN_OBJ,POS_Y_START_MAIN_OBJ);
     bool ret = human_object.LoadImg("ob6.png");
     if(!ret){
         return 0;
@@ -85,7 +85,7 @@ int main(int arc, char* argv[]){
     
     p_threat->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
  
-    p_threat->set_x_val(5);
+    p_threat->set_x_val(SPEED_THREAT);
 
     BulletObject * p_bullet = new BulletObject();
 
@@ -112,7 +112,7 @@ int main(int arc, char* argv[]){
         //SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
         
         if(is_move_screen == true){
-        bkgn_x -= 0.75;
+        bkgn_x -= SPEED_SCREEN;
         if(bkgn_x <= -(WIDTH_BACKGROUND - SCREEN_WIDTH)){
             is_move_screen = false;
         }
@@ -174,7 +174,11 @@ int main(int arc, char* argv[]){
 
                     SDL_Delay(100);
                     //Update screen
-                   if(SDL_Flip(g_screen) == -1) return 0;
+                   if(SDL_Flip(g_screen) == -1) {
+                       delete [] p_threats;
+                       SDLCommonFunc::Cleanup();
+                       SDL_Quit();
+                       return 0;}
                 }
                 Mix_PlayChannel(-1, g_sound_exp[1], 0);
                if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
@@ -185,6 +189,7 @@ int main(int arc, char* argv[]){
                }
             }
 
+                //Check collision main bullet with threats.
             std::vector<BulletObject*> bullet_list = human_object.GetBulletList();
             for(int j = 0; j < bullet_list.size(); j++){
                 BulletObject* p_bullet = bullet_list.at(j);
@@ -204,7 +209,7 @@ int main(int arc, char* argv[]){
 
                         }
 
-                        p_threat->Renew(SCREEN_WIDTH + i*800);
+                        p_threat->Renew(SCREEN_WIDTH + i*VAL_OFFSET_START_POST_THREATS);
                         human_object.DestroyBullet(j);
                         Mix_PlayChannel(-1, g_sound_exp[0], 0);
                     }
