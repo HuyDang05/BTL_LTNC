@@ -15,6 +15,7 @@
 #include "BulletObject.h"
 #include "ThreatObject.h"
 #include "ExplosionObject.h"
+#include "HP.h"
 
 
 

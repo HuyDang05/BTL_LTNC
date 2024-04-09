@@ -75,7 +75,7 @@ int main(int arc, char* argv[]){
     for(int i = 0; i < THREAT; i++){
         ThreatObject* p_threat = (p_threats + i);
         if(p_threat){
-    bool res = p_threat->LoadImg("ob3.png");
+    bool res = p_threat->LoadImg("UF1.png");
     if(res == false) return 0;
 
     
