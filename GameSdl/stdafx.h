@@ -16,6 +16,7 @@
 #include "ThreatObject.h"
 #include "ExplosionObject.h"
 #include "HP.h"
+#include "TextObject.h"
 
 
 

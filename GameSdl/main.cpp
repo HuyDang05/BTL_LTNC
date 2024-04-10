@@ -5,8 +5,10 @@
 #include "MainObject.h"
 #include "ThreatObject.h"
 #include "ExplosionObject.h"
+#include "HP.h"
+#include "TextObject.h"
 
-
+TTF_Font* g_font_ = NULL;
 
 bool Init(){
     if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -28,6 +30,11 @@ bool Init(){
 
     
     if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL) return false;
+
+    if(TTF_Init() == -1) return false;
+   
+
+
     return true;
 }
 
@@ -48,6 +55,9 @@ int main(int arc, char* argv[]){
         return 0;
     }
 
+    //make main HP
+    Health health;
+    health.Init();
     
     //make Mainobject
     MainObject human_object;
@@ -99,7 +109,7 @@ int main(int arc, char* argv[]){
         }}
 
 
-
+    int die_num = 0;
     
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     while(!is_quit){
@@ -127,6 +137,8 @@ int main(int arc, char* argv[]){
             SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
         }
 
+        //Show health
+        health.Render(g_screen);
 
 
 
@@ -184,12 +196,32 @@ int main(int arc, char* argv[]){
                        return 0;}
                 }
                 Mix_PlayChannel(-1, g_sound_exp[1], 0);
-               if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
+
+                die_num++;
+                if(die_num <= 2){
+                    SDL_Delay(1000);
+                    human_object.SetRect(POS_X_START_MAIN_OBJ, POS_Y_START_MAIN_OBJ);
+                    health.Decrease();
+                    health.Render(g_screen);
+
+                    if(SDL_Flip(g_screen) == -1){
+                        delete [] p_threats;
+                        SDLCommonFunc::Cleanup();
+                        SDL_Quit();
+                        return 0;
+                    }
+
+                }
+                else{
+                    if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
                    delete [] p_threats;
                     SDLCommonFunc::Cleanup();
                     SDL_Quit();
                     return 0;
                }
+
+                }
+               
             }
 
                 //Check collision main bullet with threats.
