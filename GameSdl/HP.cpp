@@ -34,7 +34,7 @@ void Health::Init(){
 
 }
 void Health::Decrease(){
-    number_--;
+    number_ --;
     pos_list_.pop_back();
 }
 

@@ -31,10 +31,14 @@ bool Init(){
     
     if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL) return false;
 
+
+    //Load score text
     if(TTF_Init() == -1) return false;
-   
-
-
+     g_font_ = TTF_OpenFont("game.ttf", 20);
+    if(g_font_ == NULL){
+        return 0;
+    }
+    
     return true;
 }
 
@@ -58,6 +62,11 @@ int main(int arc, char* argv[]){
     //make main HP
     Health health;
     health.Init();
+
+    //make score
+    TextObject score;
+    score.SetColor(TextObject::BLACK_TEXT);
+
     
     //make Mainobject
     MainObject human_object;
@@ -110,6 +119,7 @@ int main(int arc, char* argv[]){
 
 
     int die_num = 0;
+    int score_val = 0;
     
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     while(!is_quit){
@@ -231,6 +241,7 @@ int main(int arc, char* argv[]){
                 if(p_bullet != NULL){
                     bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_threat->GetRect());
                     if(res_col){
+                        score_val++;
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
                             int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
@@ -253,7 +264,13 @@ int main(int arc, char* argv[]){
           }
         }
         
-          
+         //Show score on screen
+        std::string val_str_score = std::to_string(score_val);
+        std::string strScore("Score :");
+        strScore += val_str_score;
+
+        score.SetText(strScore);
+        score.MakeText(g_font_, g_screen);
        
 
 
