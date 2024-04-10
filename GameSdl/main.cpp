@@ -63,6 +63,10 @@ int main(int arc, char* argv[]){
     Health health;
     health.Init();
 
+    //make time
+    TextObject time;
+    time.SetColor(TextObject::BLACK_TEXT);
+
     //make score
     TextObject score;
     score.SetColor(TextObject::BLACK_TEXT);
@@ -263,6 +267,16 @@ int main(int arc, char* argv[]){
             }
           }
         }
+        //Show time
+        std::string str_time = "Time :";
+        Uint32 time_val = SDL_GetTicks()/1000;
+        std::string str_val = std::to_string(time_val);
+        str_time += str_val;
+
+        time.SetText(str_time);
+        time.SetRect(30, 60);
+        time.MakeText(g_font_, g_screen);
+
         
          //Show score on screen
         std::string val_str_score = std::to_string(score_val);
