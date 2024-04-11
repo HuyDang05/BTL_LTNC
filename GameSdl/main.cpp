@@ -1,5 +1,4 @@
-// GameSdl.cpp : Defines the entry point for the console application.
-//
+
 #include "Common_Function.h"
 #include "stdafx.h"
 #include "MainObject.h"
@@ -72,6 +71,11 @@ int main(int arc, char* argv[]){
     //make score
     TextObject score;
     score.SetColor(TextObject::BLACK_TEXT);
+    
+    //make gold
+    SupportItem gold;
+      
+    
 
     
     //make Mainobject
@@ -126,6 +130,7 @@ int main(int arc, char* argv[]){
 
     int die_num = 0;
     int score_val = 0;
+    gold.SetRandomPos();
 
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
     if (menu == 1){
@@ -166,6 +171,7 @@ int main(int arc, char* argv[]){
         human_object.HandleMove();
         human_object.Show(g_screen);
         human_object.MakeBullet(g_screen);
+        gold.Show(g_screen);
 
 
         
@@ -273,6 +279,9 @@ int main(int arc, char* argv[]){
             }
           }
         }
+
+        
+
         //Show time
         std::string str_time = "Time :";
         Uint32 time_val = SDL_GetTicks()/1000;
@@ -284,13 +293,23 @@ int main(int arc, char* argv[]){
         time.MakeText(g_font_, g_screen);
 
         
-         //Show score on screen
+         //Show score 
         std::string val_str_score = std::to_string(score_val);
         std::string strScore("Score :");
         strScore += val_str_score;
 
         score.SetText(strScore);
         score.MakeText(g_font_, g_screen);
+        score.SetRect(30, 40);
+        
+
+        //Show gold
+       /* int gold_val = human_object.GetGoldCount();
+        std::string gold_str = std::to_string(gold_val);*/
+
+       /* gold.SetText(gold_str);
+        gold.MakeText(g_font_, g_screen);
+        gold.SetRect(150, 40);*/
        
 
 

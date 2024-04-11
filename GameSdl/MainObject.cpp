@@ -7,12 +7,18 @@ MainObject::MainObject(){
     rect_.h = HEIGHT_MAIN_OBJECT;
     x_val_ = 0;
     y_val_ = 0;
+    gold_count = 0;
 }
 
 MainObject::~MainObject()
 {
     ;
 }
+
+//void MainObject::IncreaseGold(){
+//    gold_count++;
+//}
+
 
 void MainObject:: HandleInputAction(SDL_Event events, Mix_Chunk* bullet_sound[2]){
     BulletObject* p_bullet = new BulletObject();

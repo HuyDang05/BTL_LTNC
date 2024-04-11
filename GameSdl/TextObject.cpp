@@ -3,8 +3,8 @@
 #include "stdafx.h"
 
 TextObject::TextObject(){
-    rect_.x = 30;
-    rect_.y = 40;
+  //  rect_.x = 30;
+    //rect_.y = 40;
     text_color.r = 0;
     text_color.r = 0;
     text_color.r = 0;

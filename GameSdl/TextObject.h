@@ -5,7 +5,7 @@
 #include <string>
 #include <SDL_ttf.h>
 #include "stdafx.h"
-
+#include "Common_Function.h"
 
 class TextObject : public BaseObject
 {
