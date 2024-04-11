@@ -6,6 +6,7 @@
 #include "ExplosionObject.h"
 #include "HP.h"
 #include "TextObject.h"
+#include "SupportItem.h"
 
 TTF_Font* g_font_ = NULL;
 TTF_Font* g_font_menu = NULL;
@@ -74,7 +75,7 @@ int main(int arc, char* argv[]){
     
     //make gold
     SupportItem gold;
-      
+    gold.Init();
     
 
     
@@ -130,7 +131,7 @@ int main(int arc, char* argv[]){
 
     int die_num = 0;
     int score_val = 0;
-    gold.SetRandomPos();
+  /*  gold.SetRandomPos();*/
 
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
     if (menu == 1){
@@ -166,12 +167,15 @@ int main(int arc, char* argv[]){
         health.Render(g_screen);
 
 
+        gold.Render(g_screen);
+
+
 
         //Implement main
         human_object.HandleMove();
         human_object.Show(g_screen);
         human_object.MakeBullet(g_screen);
-        gold.Show(g_screen);
+    
 
 
         
