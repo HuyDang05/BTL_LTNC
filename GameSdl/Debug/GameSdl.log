@@ -1,31 +1,14 @@
-﻿Build started 10/4/2024 9:04:14 PM.
+﻿Build started 11/4/2024 10:17:46 AM.
      1>Project "D:\GAME\GameSdl\GameSdl\GameSdl.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ID:\GAME\GameSdl\sdl_lib\SDL2_ttf_2_0_11\include /ID:\GAME\GameSdl\sdl_lib\SDL_mixer_1_2_12\include /ID:\GAME\GameSdl\sdl_lib\SDL_image_1_2_4\include /ID:\GAME\GameSdl\sdl_lib\SDL_1_2_15\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\AIR BATTLE.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-     1>d:\game\gamesdl\gamesdl\main.cpp(108): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-     1>d:\game\gamesdl\gamesdl\main.cpp(147): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>d:\game\gamesdl\gamesdl\main.cpp(151): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>d:\game\gamesdl\gamesdl\main.cpp(178): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\game\gamesdl\gamesdl\main.cpp(197): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>d:\game\gamesdl\gamesdl\main.cpp(198): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>d:\game\gamesdl\gamesdl\main.cpp(243): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\game\gamesdl\gamesdl\main.cpp(250): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>d:\game\gamesdl\gamesdl\main.cpp(251): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GAME\GameSdl\Debug\AIR BATTLE.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL2_ttf_2_0_11\lib\x86 /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL_mixer_1_2_12\lib\x86 /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL_image_1_2_4\lib /LIBPATH:D:\GAME\GameSdl\sdl_lib\SDL_1_2_15\lib\x86 SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib SDL_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GAME\GameSdl\Debug\AIR BATTLE.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GAME\GameSdl\Debug\AIR BATTLE.lib" /MACHINE:X86 Debug\BaseObject.obj
-         Debug\BulletObject.obj
-         Debug\Common_Function.obj
-         Debug\ExplosionObject.obj
-         Debug\HP.obj
-         Debug\main.obj
-         Debug\MainObject.obj
-         Debug\stdafx.obj
-         Debug\TextObject.obj
-         Debug\ThreatObject.obj
-         GameSdl.vcxproj -> D:\GAME\GameSdl\Debug\AIR BATTLE.exe
-     1>Done Building Project "D:\GAME\GameSdl\GameSdl\GameSdl.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ID:\GAME\GameSdl\sdl_lib\SDL2_ttf_2_0_11\include /ID:\GAME\GameSdl\sdl_lib\SDL_mixer_1_2_12\include /ID:\GAME\GameSdl\sdl_lib\SDL_image_1_2_4\include /ID:\GAME\GameSdl\sdl_lib\SDL_1_2_15\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\AIR BATTLE.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Common_Function.cpp
+         Common_Function.cpp
+     1>d:\game\gamesdl\gamesdl\common_function.cpp(56): error C2668: 'IsEnter' : ambiguous call to overloaded function
+                 d:\game\gamesdl\gamesdl\common_function.cpp(4): could be 'bool IsEnter(const int &,const int &,const SDL_Rect &)' [found using argument-dependent lookup]
+                 d:\game\gamesdl\gamesdl\common_function.h(56): or       'bool SDLCommonFunc::IsEnter(const int &,const int &,const SDL_Rect &)'
+                 while trying to match the argument list '(int, int, SDL_Rect)'
+     1>Done Building Project "D:\GAME\GameSdl\GameSdl\GameSdl.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.00
+Time Elapsed 00:00:00.18

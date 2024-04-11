@@ -1,6 +1,86 @@
 #include "Common_Function.h"
 #include "stdafx.h"
 
+  bool IsEnter(const int& x, const int& y, const SDL_Rect& rect){
+      if(x >= rect.x && x < rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h) return true;
+      return false;
+  }
+
+int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
+    g_img_menu = LoadImage(" ");
+    if(g_img_menu == NULL){
+        return 0;
+    }
+
+    const int item_num = 2;
+    SDL_Rect pos_arr[item_num];
+
+    pos_arr[0].x = 200;
+    pos_arr[0].y = 400;
+
+    pos_arr[1].x = 200;
+    pos_arr[1].y = 200;
+    
+    TextObject text_menu[item_num];
+
+    text_menu[0].SetText("Play Game");
+    text_menu[0].SetColor(TextObject::BLACK_TEXT);
+    text_menu[0].SetRect(pos_arr[0].x, pos_arr[0].y);
+
+    text_menu[0].SetText("Exit Game");
+    text_menu[0].SetColor(TextObject::BLACK_TEXT);
+    text_menu[0].SetRect(pos_arr[1].x, pos_arr[1].y);
+
+    bool choose[item_num] = {0,0};
+    int x_mouse = 0;
+    int y_mouse  = 0;
+
+    SDL_Event m_event;
+    while (true)
+    {
+        SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
+        for(int i = 0; i < item_num; i++){
+            text_menu[i].MakeText(font, des);
+    }
+        while (SDL_PollEvent(&m_event))
+        {
+            switch(m_event.type){
+            case SDL_QUIT:
+                    return 0;
+            case SDL_MOUSEMOTION:
+                {
+                    x_mouse = m_event.motion.x;
+                    y_mouse = m_event.motion.y;
+
+                    for(int i = 0; i < item_num; i++){
+                        if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
+                            if(choose[i] == false){
+                                choose[i] = 1;
+                                text_menu[i].SetColor(TextObject::RED_TEXT);
+                            }
+
+
+                        }
+
+
+                    }
+
+                }
+
+
+
+
+            }
+        }
+
+
+    }
+
+
+
+
+}
+
 
 SDL_Surface* SDLCommonFunc::LoadImage(std:: string file_path){
     SDL_Surface* load_image = NULL;

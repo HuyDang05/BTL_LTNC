@@ -9,6 +9,7 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
+#include "TextObject.h"
 
 //SCREEN
 const int WIDTH_BACKGROUND = 4800;
@@ -35,6 +36,7 @@ const int VAL_OFFSET_START_POST_THREATS = 800;
 
 static SDL_Surface* g_screen = NULL;
 static SDL_Surface* g_bkground = NULL;
+static SDL_Surface* g_img_menu = NULL;
 static SDL_Event g_even;
 
 
@@ -50,6 +52,8 @@ namespace SDLCommonFunc{
     void ApplySurfaceVid(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip_, int x, int y);
     void Cleanup();
     bool IsCollision(const SDL_Rect& object_a, const SDL_Rect& object_b);
+    int  MakeMenu(SDL_Surface* des, TTF_Font* font);
+    bool IsEnter(const int& x, const int& y, const SDL_Rect& rect);
 }
 
 
