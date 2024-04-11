@@ -9,12 +9,12 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-#include "TextObject.h"
+
 
 //SCREEN
 const int WIDTH_BACKGROUND = 4800;
 const int HEIGHT_BACKGROUND = 600;
-const int SCREEN_WIDTH = 1360;
+const int SCREEN_WIDTH = 1050;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
 const int SPEED_SCREEN = 1;
@@ -48,7 +48,7 @@ static Mix_Chunk* g_sound_bgr[1];
 
 namespace SDLCommonFunc{
     SDL_Surface* LoadImage(std:: string file_path);
-    void ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y);
+    SDL_Rect ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y);
     void ApplySurfaceVid(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip_, int x, int y);
     void Cleanup();
     bool IsCollision(const SDL_Rect& object_a, const SDL_Rect& object_b);

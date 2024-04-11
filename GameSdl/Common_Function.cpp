@@ -1,13 +1,14 @@
 #include "Common_Function.h"
 #include "stdafx.h"
+#include "TextObject.h"
 
-  bool IsEnter(const int& x, const int& y, const SDL_Rect& rect){
+ bool SDLCommonFunc::IsEnter(const int& x, const int& y, const SDL_Rect& rect){
       if(x >= rect.x && x < rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h) return true;
       return false;
   }
 
 int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
-    g_img_menu = LoadImage(" ");
+    g_img_menu = LoadImage("gim.png");
     if(g_img_menu == NULL){
         return 0;
     }
@@ -19,7 +20,7 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     pos_arr[0].y = 400;
 
     pos_arr[1].x = 200;
-    pos_arr[1].y = 200;
+    pos_arr[1].y = 450;
     
     TextObject text_menu[item_num];
 
@@ -27,9 +28,9 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     text_menu[0].SetColor(TextObject::BLACK_TEXT);
     text_menu[0].SetRect(pos_arr[0].x, pos_arr[0].y);
 
-    text_menu[0].SetText("Exit Game");
-    text_menu[0].SetColor(TextObject::BLACK_TEXT);
-    text_menu[0].SetRect(pos_arr[1].x, pos_arr[1].y);
+    text_menu[1].SetText("Exit Game");
+    text_menu[1].SetColor(TextObject::BLACK_TEXT);
+    text_menu[1].SetRect(pos_arr[1].x, pos_arr[1].y);
 
     bool choose[item_num] = {0,0};
     int x_mouse = 0;
@@ -46,7 +47,7 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
         {
             switch(m_event.type){
             case SDL_QUIT:
-                    return 0;
+                    return 1;
             case SDL_MOUSEMOTION:
                 {
                     x_mouse = m_event.motion.x;
@@ -61,24 +62,54 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
 
 
                         }
+                        else{
+                            if(choose[i] == true){
+                                choose[i] = 0;
+                                text_menu[i].SetColor(TextObject::BLACK_TEXT);
+                            }
+
+
+
+                        }
 
 
                     }
 
                 }
+                break;
 
+            case SDL_MOUSEBUTTONDOWN:
+                {
+                    x_mouse = m_event.button.x;
+                    y_mouse = m_event.button.y;
+                     for(int i = 0; i < item_num; i++){
+                    if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
+                            return i;
+
+
+                        }
+                }
+                }
+                break;
+            case SDL_KEYDOWN:
+                if(m_event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    return 1;}
+
+            default:
+                break;
 
 
 
             }
         }
 
-
+         SDL_Flip(des);
     }
 
 
-
-
+   
+    return 1;
 }
 
 
@@ -98,11 +129,13 @@ SDL_Surface* SDLCommonFunc::LoadImage(std:: string file_path){
     return optimize_image;
 }
 
-void SDLCommonFunc::ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y){
+SDL_Rect SDLCommonFunc::ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y){
     SDL_Rect offset;
     offset.x = x;
     offset.y = y;
     SDL_BlitSurface(scr, NULL, des, &offset);
+
+    return offset;
 }
 
 void SDLCommonFunc::ApplySurfaceVid(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip, int x, int y){

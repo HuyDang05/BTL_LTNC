@@ -9,6 +9,7 @@
 #include "TextObject.h"
 
 TTF_Font* g_font_ = NULL;
+TTF_Font* g_font_menu = NULL;
 
 bool Init(){
     if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -34,8 +35,9 @@ bool Init(){
 
     //Load score text
     if(TTF_Init() == -1) return false;
-     g_font_ = TTF_OpenFont("game.ttf", 20);
-    if(g_font_ == NULL){
+    g_font_ = TTF_OpenFont("game.ttf", 20);
+    g_font_menu = TTF_OpenFont("game.ttf", 40);
+    if(g_font_ == NULL || g_font_menu == NULL){
         return 0;
     }
     
@@ -124,6 +126,10 @@ int main(int arc, char* argv[]){
 
     int die_num = 0;
     int score_val = 0;
+
+    int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
+    if (menu == 1){
+        is_quit = true;}
     
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     while(!is_quit){
