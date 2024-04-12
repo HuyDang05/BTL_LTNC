@@ -11,22 +11,27 @@
 
 const int GOLD_WIDTH = 30;
 const int GOLD_HEIGHT = 30;
+const int ITEM_NUM = 4;
+const int LEFT_BOUND = 100;
+const int RIGHT_BOUND = SCREEN_WIDTH - 35 * ITEM_NUM;
+const int LOWER_BOUND = 200;
+
 
 class SupportItem : public BaseObject
 {
 public:
-    SupportItem();
+    SupportItem(){ number_ = ITEM_NUM;}
     ~SupportItem();
 
-    void SetNumber(const int& num){ number_ = num;}
+    
     void Init();
     void AddPos(const int& xpos, const int& ypos);
     void Render(SDL_Surface* des);
-  //  void Show(SDL_Surface* des);
-    void SetRandomPos(); // Ð?t t?a d? ng?u nhiên cho d?i tu?ng gold
+    int GetNumber() { return number_;}
+  
     void Decrease();
     void Increase();
-
+ 
 private:
     int x_val_;
     int y_val_;

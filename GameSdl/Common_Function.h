@@ -26,7 +26,7 @@ const int SPEED_MAIN_OBJECT     = 10;
 const int SPEED_BULLET_MAIN     = 20;
 
 //Threat
-const int THREAT = 1;
+const int THREAT = 3;
 const int SPEED_THREAT = 5;
 const int SPEED_BULLET_THREAT = 10;
 const int UNDER_BOUND = 200;

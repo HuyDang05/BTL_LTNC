@@ -131,7 +131,7 @@ void MainObject:: HandleMove(){
         rect_.x -= x_val_;
     }
     rect_.y += y_val_;
-    if(rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT -200){
+    if(rect_.y < 0 || rect_.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT - 180){
         rect_.y -= y_val_;
     }
 }
