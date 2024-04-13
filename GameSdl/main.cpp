@@ -141,19 +141,24 @@ int main(int arc, char* argv[]){
     int gold_num = 0;
     
 
-    int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
-    if (menu == 1){
-        is_quit = true;}
-    
-    int menu2 = SDLCommonFunc::MakeMenu2(g_screen, g_font_menu);
-    if (menu == 0){
-        is_quit = true;}
 
+    int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
+    if (menu == 1)
+    {
+        is_quit = true;
+    }
+    else if (menu == 2)
+    {
+        int menu2 = SDLCommonFunc::MakeMenu2(g_screen, g_font_menu);
+        if (menu2 == 0)
+        {
+            is_quit = true;
+        }
+    }
 
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     
-    
-    
+   
     //ENTER GAME
     while(!is_quit){
         
@@ -164,8 +169,7 @@ int main(int arc, char* argv[]){
             }
             human_object.HandleInputAction(g_even, g_sound_bullet);
         } 
-        //Apply background
-        //SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
+        
         
         if(is_move_screen == true){
         bkgn_x -= SPEED_SCREEN;

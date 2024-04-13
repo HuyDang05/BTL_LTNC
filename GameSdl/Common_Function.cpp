@@ -14,7 +14,7 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
         return 0;
     }
 
-    const int item_num = 2;
+    const int item_num = 3;
     SDL_Rect pos_arr[item_num];
 
     pos_arr[0].x = 200;
@@ -22,6 +22,10 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
 
     pos_arr[1].x = 200;
     pos_arr[1].y = 450;
+  
+    pos_arr[2].x = 200;
+    pos_arr[2].y = 500;
+
     
     TextObject text_menu[item_num];
 
@@ -33,7 +37,11 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     text_menu[1].SetColor(TextObject::BLACK_TEXT);
     text_menu[1].SetRect(pos_arr[1].x, pos_arr[1].y);
 
-    bool choose[item_num] = {0,0};
+    text_menu[2].SetText("Guide");
+    text_menu[2].SetColor(TextObject::BLACK_TEXT);
+    text_menu[2].SetRect(pos_arr[2].x, pos_arr[2].y);
+
+    bool choose[item_num] = {0, 0, 0};
     int x_mouse = 0;
     int y_mouse  = 0;
 
@@ -242,20 +250,20 @@ bool SDLCommonFunc::IsCollision(const SDL_Rect& object_a, const SDL_Rect& object
 
 
 int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
-    g_img_menu = LoadImage("ins.png");
+    g_img_menu = LoadImage("instr.png");
     if(g_img_menu == NULL){
         return 0;
     }
-     TTF_Font* g_font_ins =  TTF_OpenFont("game.ttf", 40);;
+     TTF_Font* font_ins =  TTF_OpenFont("game.ttf", 40);
      
 
     TextObject instruction;
     instruction.SetColor(TextObject::BLACK_TEXT);
     std::string str_val("INSTRUCTION");
     instruction.SetText(str_val);
-    instruction.MakeText(g_font_ins, g_screen);
-    instruction.SetRect(675, 50);
-    
+    instruction.SetRect(500, 50);
+
+
     const int item_num = 2;
     SDL_Rect pos_arr[item_num];
 
@@ -283,6 +291,9 @@ int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
     while (true)
     {
         SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
+        instruction.MakeText(font_ins, des);
+        
+
         for(int i = 0; i < item_num; i++){
             text_menu[i].MakeText(font, des);
     }
