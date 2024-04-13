@@ -26,9 +26,9 @@ const int SPEED_MAIN_OBJECT     = 10;
 const int SPEED_BULLET_MAIN     = 20;
 
 //Threat
-const int THREAT = 3;
-const int SPEED_THREAT = 5;
-const int SPEED_BULLET_THREAT = 10;
+const int THREAT = 1;
+const int SPEED_THREAT = 2;
+const int SPEED_BULLET_THREAT = 2;
 const int UNDER_BOUND = 200;
 const int VAL_OFFSET_START_POST_THREATS = 800;
 
@@ -43,6 +43,7 @@ static SDL_Event g_even;
 static Mix_Chunk* g_sound_bullet[2];
 static Mix_Chunk* g_sound_exp[2];
 static Mix_Chunk* g_sound_bgr[1];
+static Mix_Chunk* g_sound_gold[1];
 
 
 

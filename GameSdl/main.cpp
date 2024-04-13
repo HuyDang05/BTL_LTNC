@@ -28,9 +28,9 @@ bool Init(){
     g_sound_exp[0] = Mix_LoadWAV("explosion.wav");
     g_sound_exp[1] = Mix_LoadWAV("main_explosion.wav");
     g_sound_bgr[0] = Mix_LoadWAV("musicgame.wav");
-
+   g_sound_gold[0] = Mix_LoadWAV("gold_sound.wav");
     
-    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL) return false;
+    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL || g_sound_gold[0] == NULL) return false;
 
 
     //Load score text
@@ -72,10 +72,17 @@ int main(int arc, char* argv[]){
     //make score
     TextObject score;
     score.SetColor(TextObject::BLACK_TEXT);
+
+
+    //make text gold
+    TextObject gold_text;
+    gold_text.SetColor(TextObject::BLACK_TEXT);
     
     //make gold
     SupportItem gold;
-    gold.Init();
+     gold.Init();
+
+    
     
 
     
@@ -131,13 +138,18 @@ int main(int arc, char* argv[]){
 
     int die_num = 0;
     int score_val = 0;
-  /*  gold.SetRandomPos();*/
+    int gold_num = 0;
+    
 
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
     if (menu == 1){
         is_quit = true;}
     
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
+    
+    
+    
+    //ENTER GAME
     while(!is_quit){
         
         while(SDL_PollEvent(&g_even)){
@@ -163,11 +175,10 @@ int main(int arc, char* argv[]){
             SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
         }
 
-        //Show health
-        health.Render(g_screen);
+        
 
 
-        gold.Render(g_screen);
+       
 
 
 
@@ -176,7 +187,12 @@ int main(int arc, char* argv[]){
         human_object.Show(g_screen);
         human_object.MakeBullet(g_screen);
     
+        //Show health
+            health.Render(g_screen);
 
+      
+           
+            
 
         
 
@@ -187,6 +203,16 @@ int main(int arc, char* argv[]){
             p_threat->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
             p_threat->Show(g_screen);
             p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+           
+
+            
+
+
+          
+
+
 
             //Check collision threats bullet with main object
             bool is_col1 = false;
@@ -207,8 +233,8 @@ int main(int arc, char* argv[]){
            
 
             //Check collision thr and main
-            bool is_col = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
-            if(is_col || is_col1){
+            bool is_col2 = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
+            if(is_col2 || is_col1){
                 for(int ex = 0; ex < 4; ex++){
                     int x_pos = (human_object.GetRect().x + human_object.GetRect().w*0.5)- EX_WIDTH*0.5;
                     int y_pos = (human_object.GetRect().y + human_object.GetRect().h*0.5)- EX_HEIGHT*0.5;
@@ -284,6 +310,41 @@ int main(int arc, char* argv[]){
           }
         }
 
+        //Show gold 
+        gold.Render(g_screen);
+        bool is_co = SDLCommonFunc::IsCollision(human_object.GetRect(), gold.GetRect());
+      
+
+
+           if(gold_num == 30 ){
+               health.Increase();
+              health.Render(g_screen);
+           }
+           if(is_co){
+               Mix_PlayChannel(-1, g_sound_gold[0], 0);
+               gold_num++;
+               gold.Decrease();
+               gold.Render(g_screen);
+               if(gold.GetPosSize() == 0){
+                   gold.Init();
+                   gold.Render(g_screen);
+               }}
+        
+
+           
+          
+
+        //Show gold
+           std::string val_str_gold = std::to_string(gold_num);
+        std::string strGold("Gold :");
+        strGold += val_str_gold;
+
+        gold_text.SetText(strGold);
+        gold_text.MakeText(g_font_, g_screen);
+        gold_text.SetRect(50, 20);
+        
+        
+
         
 
         //Show time
@@ -306,17 +367,6 @@ int main(int arc, char* argv[]){
         score.MakeText(g_font_, g_screen);
         score.SetRect(30, 40);
         
-
-        //Show gold
-       /* int gold_val = human_object.GetGoldCount();
-        std::string gold_str = std::to_string(gold_val);*/
-
-       /* gold.SetText(gold_str);
-        gold.MakeText(g_font_, g_screen);
-        gold.SetRect(150, 40);*/
-       
-
-
 
         //Update screen
         if(SDL_Flip(g_screen) == -1) return 0;

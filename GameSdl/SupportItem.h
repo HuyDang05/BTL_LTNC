@@ -11,7 +11,7 @@
 
 const int GOLD_WIDTH = 30;
 const int GOLD_HEIGHT = 30;
-const int ITEM_NUM = 4;
+const int ITEM_NUM = 5;
 const int LEFT_BOUND = 100;
 const int RIGHT_BOUND = SCREEN_WIDTH - 35 * ITEM_NUM;
 const int LOWER_BOUND = 200;
@@ -28,9 +28,10 @@ public:
     void AddPos(const int& xpos, const int& ypos);
     void Render(SDL_Surface* des);
     int GetNumber() { return number_;}
-  
+   // bool CheckCollisionWithGold(MainObject& main_object, SupportItem& gold);
     void Decrease();
     void Increase();
+    int GetPosSize() { return pos_list_.size();}
  
 private:
     int x_val_;
