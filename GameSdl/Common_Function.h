@@ -14,7 +14,7 @@
 //SCREEN
 const int WIDTH_BACKGROUND = 4800;
 const int HEIGHT_BACKGROUND = 600;
-const int SCREEN_WIDTH = 1050;
+const int SCREEN_WIDTH = 1350;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
 const int SPEED_SCREEN = 1;
@@ -37,6 +37,7 @@ const int VAL_OFFSET_START_POST_THREATS = 800;
 static SDL_Surface* g_screen = NULL;
 static SDL_Surface* g_bkground = NULL;
 static SDL_Surface* g_img_menu = NULL;
+static SDL_Surface* g_img_instruct = NULL;
 static SDL_Event g_even;
 
 
@@ -54,6 +55,7 @@ namespace SDLCommonFunc{
     void Cleanup();
     bool IsCollision(const SDL_Rect& object_a, const SDL_Rect& object_b);
     int  MakeMenu(SDL_Surface* des, TTF_Font* font);
+    int  MakeMenu2(SDL_Surface* des, TTF_Font* font);
     bool IsEnter(const int& x, const int& y, const SDL_Rect& rect);
 }
 

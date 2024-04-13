@@ -145,6 +145,11 @@ int main(int arc, char* argv[]){
     if (menu == 1){
         is_quit = true;}
     
+    int menu2 = SDLCommonFunc::MakeMenu2(g_screen, g_font_menu);
+    if (menu == 0){
+        is_quit = true;}
+
+
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     
     
