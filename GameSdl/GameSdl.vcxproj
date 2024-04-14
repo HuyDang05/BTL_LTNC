@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="BulletObject.h" />
     <ClInclude Include="Common_Function.h" />
     <ClInclude Include="ExplosionObject.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BulletObject.cpp" />
     <ClCompile Include="Common_Function.cpp" />
     <ClCompile Include="ExplosionObject.cpp" />

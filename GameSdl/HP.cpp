@@ -40,10 +40,10 @@ void Health::Decrease(){
 }
 
 void Health::Increase(){
-    if(number_ < 6){
+    if(number_ < 5){
         number_ ++;
-        std::cout << "1 : "<< number_ << std::endl;
+       
 
-    pos_list_.push_back(number_ * 20);}
+    pos_list_.push_back(number_ * 35);}
 }
 

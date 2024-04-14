@@ -1,5 +1,6 @@
 #ifndef THREAT_OBJECT_H_
 #define THREAT_OBJECT_H_
+
 #include "Common_Function.h"
 #include "BaseObject.h"
 #include "stdafx.h"

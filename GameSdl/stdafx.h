@@ -18,6 +18,7 @@
 #include "HP.h"
 #include "TextObject.h"
 #include "SupportItem.h"
+#include "Boss.h"
 
 
 

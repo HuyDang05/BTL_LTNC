@@ -32,6 +32,10 @@ const int SPEED_BULLET_THREAT = 10;
 const int UNDER_BOUND = 200;
 const int VAL_OFFSET_START_POST_THREATS = 800;
 
+const int BOSS = 3;
+
+const int SPEED_BULLET_BOSS = 15;
+
 
 
 static SDL_Surface* g_screen = NULL;

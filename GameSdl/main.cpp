@@ -7,7 +7,7 @@
 #include "HP.h"
 #include "TextObject.h"
 #include "SupportItem.h"
-#include <iostream>
+#include "Boss.h"
 
 TTF_Font* g_font_ = NULL;
 TTF_Font* g_font_menu = NULL;
@@ -118,6 +118,10 @@ again:
     bool res = p_threat->LoadImg("UF1.png");
     if(res == false) return 0;
 
+
+    
+
+
     
 
     int rand_y = rand()%500;
@@ -138,8 +142,42 @@ again:
 
         }}
 
+    //make BossObject
+   BossObject* p_bosses = new BossObject[BOSS];
+    for(int i = 0; i < THREAT; i++){
+        BossObject* p_boss = (p_bosses + i);
+        if(p_boss){
+    bool res = p_boss->LoadImg("UF2.png");
+    if(res == false) return 0;
+
+
+    
+
+
+    
+
+    int rand_y = rand()%500;
+    if(rand_y > SCREEN_HEIGHT){
+         rand_y = SCREEN_HEIGHT*0.25;
+    }
+    
+    p_boss->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
+ 
+    p_boss->set_x_val(SPEED_THREAT);
+
+    BulletObject * p_bullet = new BulletObject();
+
+       p_boss->InitBullet(p_bullet);
+
+       
+
+
+        }}
+
 
   
+    
+    
     int score_val = 0;
     int gold_num = 0;
     
