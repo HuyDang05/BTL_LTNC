@@ -7,6 +7,7 @@
 #include "HP.h"
 #include "TextObject.h"
 #include "SupportItem.h"
+#include <iostream>
 
 TTF_Font* g_font_ = NULL;
 TTF_Font* g_font_menu = NULL;
@@ -138,7 +139,7 @@ again:
         }}
 
 
-    int die_num = 0;
+  
     int score_val = 0;
     int gold_num = 0;
     
@@ -256,9 +257,9 @@ again:
                 }
                 Mix_PlayChannel(-1, g_sound_exp[1], 0);
 
-                die_num++;
-                if(die_num <= 2){
-                    SDL_Delay(1000);
+
+                if(health.GetNumber() > 1){
+                    SDL_Delay(1500);
                     human_object.SetRect(POS_X_START_MAIN_OBJ, POS_Y_START_MAIN_OBJ);
                     health.Decrease();
                     health.Render(g_screen);
@@ -339,11 +340,7 @@ again:
       
 
 
-           if(gold_num >= 30 ){
-               health.Increase();
-              health.Render(g_screen);
-              gold_num = gold_num - 30;
-           }
+           
            if(is_co){
                Mix_PlayChannel(-1, g_sound_gold[0], 0);
                gold_num++;
@@ -353,6 +350,11 @@ again:
                    gold.Init();
                    gold.Render(g_screen);
                }}
+           if(gold_num >= 30 ){
+               health.Increase();
+              health.Render(g_screen);
+              gold_num = gold_num - 30;
+           }
         
 
            

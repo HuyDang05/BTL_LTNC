@@ -27,8 +27,8 @@ const int SPEED_BULLET_MAIN     = 20;
 
 //Threat
 const int THREAT = 1;
-const int SPEED_THREAT = 2;
-const int SPEED_BULLET_THREAT = 2;
+const int SPEED_THREAT = 3;
+const int SPEED_BULLET_THREAT = 10;
 const int UNDER_BOUND = 200;
 const int VAL_OFFSET_START_POST_THREATS = 800;
 

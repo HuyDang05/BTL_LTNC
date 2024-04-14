@@ -9,6 +9,7 @@ public:
     Health();
     ~Health();
     void SetNumber(const int& num){ number_ = num;}
+    int GetNumber() const{ return number_; }
     void AddPos(const int& xpos);
     void Render(SDL_Surface* des);
     void Init();

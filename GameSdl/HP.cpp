@@ -1,5 +1,6 @@
 #include "HP.h"
 #include "stdafx.h"
+#include <iostream>
 Health::Health(){
 
 }
@@ -39,8 +40,9 @@ void Health::Decrease(){
 }
 
 void Health::Increase(){
-    if(number_ <= 5){
+    if(number_ < 6){
         number_ ++;
+        std::cout << "1 : "<< number_ << std::endl;
 
     pos_list_.push_back(number_ * 20);}
 }
