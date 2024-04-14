@@ -28,8 +28,8 @@ bool Init(){
     g_sound_exp[0] = Mix_LoadWAV("explosion.wav");
     g_sound_exp[1] = Mix_LoadWAV("main_explosion.wav");
     g_sound_bgr[0] = Mix_LoadWAV("musicgame.wav");
-   g_sound_gold[0] = Mix_LoadWAV("gold_sound.wav");
-    
+    g_sound_gold[0] = Mix_LoadWAV("gold_sound.wav");
+    g_sound_choose[0] = Mix_LoadWAV("choose.wav");
     if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL || g_sound_gold[0] == NULL) return false;
 
 
@@ -56,11 +56,13 @@ int main(int arc, char* argv[]){
     }
 
 
+
     g_bkground = SDLCommonFunc::LoadImage("bk.png");
     if(g_bkground == NULL){
         return 0;
     }
 
+again:
     //make main HP
     Health health;
     health.Init();
@@ -144,14 +146,14 @@ int main(int arc, char* argv[]){
 
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
     if (menu == 1)
-    {
+    {  
         is_quit = true;
     }
     else if (menu == 2)
     {
         int menu2 = SDLCommonFunc::MakeMenu2(g_screen, g_font_menu);
         if (menu2 == 0)
-        {
+        {   
             is_quit = true;
         }
     }
@@ -216,12 +218,7 @@ int main(int arc, char* argv[]){
 
            
 
-            
-
-
-          
-
-
+      
 
             //Check collision threats bullet with main object
             bool is_col1 = false;
@@ -237,9 +234,6 @@ int main(int arc, char* argv[]){
                 }
             }
              
-
-
-           
 
             //Check collision thr and main
             bool is_col2 = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
@@ -278,13 +272,33 @@ int main(int arc, char* argv[]){
 
                 }
                 else{
-                    if( MessageBox(NULL, L"YOU LOSE !", L"Notification", MB_OK) == IDOK){
-                   delete [] p_threats;
-                    SDLCommonFunc::Cleanup();
-                    SDL_Quit();
-                    return 0;
-               }
+                   
+                    int menu = SDLCommonFunc::MakeMenu3(g_screen, g_font_menu, score_val, gold_num);
+                        if (menu == 0)
+                        {  
+                           is_quit = true;
+                           continue;
+                        }
+                        else 
+                        {
 
+                                for (int i = 0; i < THREAT; i++)
+                                {
+                                    (p_threats+i)->Free();
+                                }
+
+                                health.Free();
+                                time.Free();
+                                score.Free();
+                                gold_text.Free();
+                                gold.Free();
+                                human_object.Free();
+                                exp_main.Free();
+                                exp_threats.Free();
+
+                                goto again;
+                        }
+               
                 }
                
             }
@@ -325,9 +339,10 @@ int main(int arc, char* argv[]){
       
 
 
-           if(gold_num == 30 ){
+           if(gold_num >= 30 ){
                health.Increase();
               health.Render(g_screen);
+              gold_num = gold_num - 30;
            }
            if(is_co){
                Mix_PlayChannel(-1, g_sound_gold[0], 0);
@@ -350,7 +365,7 @@ int main(int arc, char* argv[]){
 
         gold_text.SetText(strGold);
         gold_text.MakeText(g_font_, g_screen);
-        gold_text.SetRect(50, 20);
+        gold_text.SetRect(30, 40);
         
         
 
@@ -363,7 +378,7 @@ int main(int arc, char* argv[]){
         str_time += str_val;
 
         time.SetText(str_time);
-        time.SetRect(30, 60);
+        time.SetRect(30, 90);
         time.MakeText(g_font_, g_screen);
 
         
@@ -374,14 +389,27 @@ int main(int arc, char* argv[]){
 
         score.SetText(strScore);
         score.MakeText(g_font_, g_screen);
-        score.SetRect(30, 40);
+        score.SetRect(30, 65);
         
 
         //Update screen
         if(SDL_Flip(g_screen) == -1) return 0;
     }
 
-    delete [] p_threats;
+
+    for (int i = 0; i < THREAT; i++)
+    {
+        (p_threats+i)->Free();
+    }
+
+    health.Free();
+    time.Free();
+    score.Free();
+    gold_text.Free();
+    gold.Free();
+    human_object.Free();
+    exp_main.Free();
+    exp_threats.Free();
 
     SDLCommonFunc::Cleanup();
     SDL_Quit();

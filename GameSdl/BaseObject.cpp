@@ -11,13 +11,13 @@ BaseObject::BaseObject(){
 }
 
 BaseObject::~BaseObject(){
-    if(p_object_ != NULL){
-        SDL_FreeSurface(p_object_);
-    }
+    Free();
 }
 
 
 bool BaseObject::LoadImg(const char* file_name){
+
+    Free();
     p_object_ = SDLCommonFunc::LoadImage(file_name);
     if(p_object_ == NULL) return false;
     return true;
@@ -29,3 +29,11 @@ void BaseObject::Show(SDL_Surface* des){
     }
 }
 
+void BaseObject::Free()
+{
+    if(p_object_ != NULL)
+    {
+        SDL_FreeSurface(p_object_);
+        p_object_ = NULL;
+    }
+}

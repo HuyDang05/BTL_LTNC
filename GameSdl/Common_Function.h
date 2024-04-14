@@ -45,6 +45,7 @@ static Mix_Chunk* g_sound_bullet[2];
 static Mix_Chunk* g_sound_exp[2];
 static Mix_Chunk* g_sound_bgr[1];
 static Mix_Chunk* g_sound_gold[1];
+static Mix_Chunk* g_sound_choose[1];
 
 
 
@@ -56,6 +57,7 @@ namespace SDLCommonFunc{
     bool IsCollision(const SDL_Rect& object_a, const SDL_Rect& object_b);
     int  MakeMenu(SDL_Surface* des, TTF_Font* font);
     int  MakeMenu2(SDL_Surface* des, TTF_Font* font);
+    int  MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num);
     bool IsEnter(const int& x, const int& y, const SDL_Rect& rect);
 }
 

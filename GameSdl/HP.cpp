@@ -39,8 +39,8 @@ void Health::Decrease(){
 }
 
 void Health::Increase(){
-    if(number_ <= 7){
-    number_ ++;
+    if(number_ <= 5){
+        number_ ++;
 
     pos_list_.push_back(number_ * 20);}
 }
