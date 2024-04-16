@@ -65,17 +65,25 @@ void BossObject::MakeBullet(SDL_Surface* des, const int& x_limit, const int& y_l
    }
 
  
-
+ 
 void BossObject::HandleMove(const int& x_border, const int& y_border){
-    rect_.x -= x_val_;
-    if(rect_.x < 0){
-        rect_.x = SCREEN_WIDTH;
+    if(rect_.x > 1200){
+    rect_.x -= x_val_;}
+  
+    
+        if(rect_.y < 0){
+            rect_.y += y_val_;}
+        else if(rect_.y > 300){
+            rect_.y -= y_val_;}
         int rand_y = rand()%500;
+
         if(rand_y > SCREEN_HEIGHT-UNDER_BOUND){
             rand_y = SCREEN_HEIGHT*0.25;
         }
         rect_.y = rand_y;
-    }
+
+        
+    
 
 
 }

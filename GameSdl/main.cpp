@@ -144,18 +144,11 @@ again:
 
     //make BossObject
    BossObject* p_bosses = new BossObject[BOSS];
-    for(int i = 0; i < THREAT; i++){
+    for(int i = 0; i < BOSS; i++){
         BossObject* p_boss = (p_bosses + i);
         if(p_boss){
     bool res = p_boss->LoadImg("UF2.png");
     if(res == false) return 0;
-
-
-    
-
-
-    
-
     int rand_y = rand()%500;
     if(rand_y > SCREEN_HEIGHT){
          rand_y = SCREEN_HEIGHT*0.25;
@@ -163,20 +156,13 @@ again:
     
     p_boss->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
  
-    p_boss->set_x_val(SPEED_THREAT);
-
+    p_boss->set_x_val(SPEED_BOSS);
+    p_boss->set_y_val(SPEED_BOSS);
     BulletObject * p_bullet = new BulletObject();
 
        p_boss->InitBullet(p_bullet);
-
-       
-
-
-        }}
-
-
-  
-    
+     }}
+ 
     
     int score_val = 0;
     int gold_num = 0;
@@ -216,6 +202,7 @@ again:
         bkgn_x -= SPEED_SCREEN;
         if(bkgn_x <= -(WIDTH_BACKGROUND - SCREEN_WIDTH)){
             is_move_screen = false;
+             
         }
         else{
         SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
@@ -223,6 +210,130 @@ again:
         }
         else{
             SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
+            for(int i = 0; i < BOSS; i++){
+                 BossObject* p_boss = (p_bosses + i);
+            if(p_boss){
+            p_boss->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT );
+            p_boss->Show(g_screen);
+            p_boss->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+           
+
+      
+
+            //Check collision threats bullet with main object
+            bool is_col1 = false;
+            std::vector<BulletObject*> bullet_arr = p_boss->GetBulletList();
+            for(int b = 0; b < bullet_arr.size(); b++){
+                BulletObject* p_bullet = bullet_arr.at(b);
+                if(p_bullet){
+                    is_col1 = SDLCommonFunc::IsCollision(p_bullet->GetRect(),human_object.GetRect());
+                    if(is_col1 == true){
+                        p_boss->ResetBullet(p_bullet);
+                        break;
+                    }
+                }
+            }
+             
+
+            //Check collision thr and main
+            bool is_col2 = SDLCommonFunc::IsCollision(human_object.GetRect(), p_boss->GetRect());
+            if(is_col2 || is_col1){
+                for(int ex = 0; ex < 4; ex++){
+                    int x_pos = (human_object.GetRect().x + human_object.GetRect().w*0.5)- EX_WIDTH*0.5;
+                    int y_pos = (human_object.GetRect().y + human_object.GetRect().h*0.5)- EX_HEIGHT*0.5;
+
+                    exp_main.set_frame(ex);
+                    exp_main.SetRect(x_pos, y_pos);
+                    exp_main.ShowEx(g_screen);
+
+                    SDL_Delay(100);
+                    //Update screen
+                   if(SDL_Flip(g_screen) == -1) {
+                       delete [] p_threats;
+                       SDLCommonFunc::Cleanup();
+                       SDL_Quit();
+                       return 0;}
+                }
+                Mix_PlayChannel(-1, g_sound_exp[1], 0);
+
+
+                if(health.GetNumber() > 1){
+                    SDL_Delay(1500);
+                    human_object.SetRect(POS_X_START_MAIN_OBJ, POS_Y_START_MAIN_OBJ);
+                    health.Decrease();
+                    health.Render(g_screen);
+
+                    if(SDL_Flip(g_screen) == -1){
+                        delete [] p_threats;
+                        SDLCommonFunc::Cleanup();
+                        SDL_Quit();
+                        return 0;
+                    }
+
+                }
+                else{
+                   
+                    int menu = SDLCommonFunc::MakeMenu3(g_screen, g_font_menu, score_val, gold_num);
+                        if (menu == 0)
+                        {  
+                           is_quit = true;
+                           continue;
+                        }
+                        else 
+                        {
+
+                                for (int i = 0; i < BOSS; i++)
+                                {
+                                    (p_bosses+i)->Free();
+                                }
+
+                                health.Free();
+                                time.Free();
+                                score.Free();
+                                gold_text.Free();
+                                gold.Free();
+                                human_object.Free();
+                                exp_main.Free();
+                                exp_threats.Free();
+
+                                goto again;
+                        }
+               
+                }
+               
+            }
+
+                //Check collision main bullet with threats.
+            std::vector<BulletObject*> bullet_list = human_object.GetBulletList();
+            for(int j = 0; j < bullet_list.size(); j++){
+                BulletObject* p_bullet = bullet_list.at(j);
+                if(p_bullet != NULL){
+                    bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_boss->GetRect());
+                    if(res_col){
+                        score_val++;
+                        for(int t = 0; t < 4; t++){
+                            int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
+                            int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
+
+                            exp_threats.set_frame(t);
+                            exp_threats.SetRect(x_pos, y_pos);
+                            exp_threats.ShowEx(g_screen);
+
+                            //Update screen
+                            if(SDL_Flip(g_screen) == -1) return 0;
+
+                        }
+
+                        p_boss->Renew(SCREEN_WIDTH + i*VAL_OFFSET_START_POST_THREATS);
+                        human_object.DestroyBullet(j);
+                        Mix_PlayChannel(-1, g_sound_exp[0], 0);
+                    }
+                }
+            }
+          }
+        }//
         }
 
         
@@ -370,7 +481,7 @@ again:
                 }
             }
           }
-        }
+        }//
 
         //Show gold 
         gold.Render(g_screen);
