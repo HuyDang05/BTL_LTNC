@@ -17,7 +17,7 @@ const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_WIDTH = 1350;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
-const int SPEED_SCREEN = 5;
+const int SPEED_SCREEN = 6;
 
 //Main
 const int POS_X_START_MAIN_OBJ  = 100;
@@ -26,13 +26,13 @@ const int SPEED_MAIN_OBJECT     = 10;
 const int SPEED_BULLET_MAIN     = 20;
 
 //Threat
-const int THREAT = 1;
+const int THREAT = 0;
 const int SPEED_THREAT = 3;
 const int SPEED_BULLET_THREAT = 10;
 const int UNDER_BOUND = 200;
 const int VAL_OFFSET_START_POST_THREATS = 800;
 
-const int BOSS = 3;
+const int BOSS = 2;
 const int SPEED_BULLET_BOSS = 15;
 const int SPEED_BOSS = 1;
 

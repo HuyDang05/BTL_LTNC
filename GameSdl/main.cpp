@@ -8,6 +8,7 @@
 #include "TextObject.h"
 #include "SupportItem.h"
 #include "Boss.h"
+#include <iostream>
 
 TTF_Font* g_font_ = NULL;
 TTF_Font* g_font_menu = NULL;
@@ -166,7 +167,7 @@ again:
     
     int score_val = 0;
     int gold_num = 0;
-    
+    double slvc = 0;
 
 
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
@@ -210,8 +211,10 @@ again:
         }
         else{
             SDLCommonFunc::ApplySurface(g_bkground,g_screen,bkgn_x, 0);
+             
             for(int i = 0; i < BOSS; i++){
                  BossObject* p_boss = (p_bosses + i);
+                
             if(p_boss){
             p_boss->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT );
             p_boss->Show(g_screen);
@@ -312,6 +315,7 @@ again:
                 if(p_bullet != NULL){
                     bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_boss->GetRect());
                     if(res_col){
+                        if(slvc > 20){
                         score_val++;
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
@@ -329,6 +333,25 @@ again:
                         p_boss->Renew(SCREEN_WIDTH + i*VAL_OFFSET_START_POST_THREATS);
                         human_object.DestroyBullet(j);
                         Mix_PlayChannel(-1, g_sound_exp[0], 0);
+                        slvc = 0;
+                        }
+                        else {
+                            slvc += 0.18; 
+                        for(int t = 0; t < 4; t++){
+                            int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
+                            int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
+
+                            exp_threats.set_frame(t);
+                            exp_threats.SetRect(x_pos, y_pos);
+                            exp_threats.ShowEx(g_screen);
+
+                            //Update screen
+                            if(SDL_Flip(g_screen) == -1) return 0;
+                        }
+
+                        }
+
+
                     }
                 }
             }
