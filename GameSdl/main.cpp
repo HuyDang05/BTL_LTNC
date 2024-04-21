@@ -102,7 +102,7 @@ again:
     //make Mainobject
     MainObject human_object;
     human_object.SetRect(POS_X_START_MAIN_OBJ,POS_Y_START_MAIN_OBJ);
-    bool ret = human_object.LoadImg("ob6.png");
+    bool ret = human_object.LoadImg("c3.png");
     if(!ret){
         return 0;
     }
@@ -125,7 +125,7 @@ again:
     for(int i = 0; i < THREAT; i++){
         ThreatObject* p_threat = (p_threats + i);
         if(p_threat){
-    bool res = p_threat->LoadImg("UF1.png");
+    bool res = p_threat->LoadImg("c2.png");
     if(res == false) return 0;
 
 
@@ -152,7 +152,7 @@ again:
         BossObject* p_boss = (p_bosses + i);
         if(p_boss)
         {
-            bool res = p_boss->LoadImg("UF2.png");
+            bool res = p_boss->LoadImg("c4.png");
             if(res == false) 
                 return 0;
 
