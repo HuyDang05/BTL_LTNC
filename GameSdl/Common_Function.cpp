@@ -10,7 +10,7 @@
 
 int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     g_sound_choose[0] = Mix_LoadWAV("choose.wav");
-    g_img_menu = LoadImage("kgime.png");
+    g_img_menu = LoadImg("kgime.png");
     if(g_img_menu == NULL){
         return 0;
     }
@@ -125,7 +125,7 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
 }
 
 
-SDL_Surface* SDLCommonFunc::LoadImage(std:: string file_path){
+SDL_Surface* SDLCommonFunc::LoadImg(std:: string file_path){
     SDL_Surface* load_image = NULL;
     SDL_Surface* optimize_image = NULL;
     load_image = IMG_Load(file_path.c_str());
@@ -253,7 +253,7 @@ bool SDLCommonFunc::IsCollision(const SDL_Rect& object_a, const SDL_Rect& object
 
 
 int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
-    g_img_menu = LoadImage("instr.png");
+    g_img_menu = LoadImg("instr.png");
     if(g_img_menu == NULL){
         return 0;
     }
@@ -372,7 +372,7 @@ int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
 
 
 int SDLCommonFunc::MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num){
-    g_img_menu = LoadImage("demo.png");
+    g_img_menu = LoadImg("demo.png");
     if(g_img_menu == NULL){
         return 0;
     }
@@ -507,4 +507,10 @@ int SDLCommonFunc::MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, in
 
    
     return 1;
+}
+
+int SDLCommonFunc::GetRandInSpace(int s1, int s2)
+{
+    int ret = s1 + ( std::rand() % ( s2 - s1 + 1 ) );
+    return ret;
 }

@@ -89,6 +89,7 @@
     <ClInclude Include="Common_Function.h" />
     <ClInclude Include="ExplosionObject.h" />
     <ClInclude Include="HP.h" />
+    <ClInclude Include="ImpTime.h" />
     <ClInclude Include="MainObject.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SupportItem.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Common_Function.cpp" />
     <ClCompile Include="ExplosionObject.cpp" />
     <ClCompile Include="HP.cpp" />
+    <ClCompile Include="ImpTime.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
     <ClCompile Include="stdafx.cpp">

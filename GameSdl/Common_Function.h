@@ -34,7 +34,7 @@ const int VAL_OFFSET_START_POST_THREATS = 800;
 
 const int BOSS = 2;
 const int SPEED_BULLET_BOSS = 15;
-const int SPEED_BOSS = 1;
+const int SPEED_BOSS = 5;
 
 
 
@@ -54,7 +54,7 @@ static Mix_Chunk* g_sound_choose[1];
 
 
 namespace SDLCommonFunc{
-    SDL_Surface* LoadImage(std:: string file_path);
+    SDL_Surface* LoadImg(std:: string file_path);
     SDL_Rect ApplySurface(SDL_Surface* scr, SDL_Surface* des, int x, int y);
     void ApplySurfaceVid(SDL_Surface* scr, SDL_Surface* des, SDL_Rect* clip_, int x, int y);
     void Cleanup();
@@ -63,6 +63,8 @@ namespace SDLCommonFunc{
     int  MakeMenu2(SDL_Surface* des, TTF_Font* font);
     int  MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num);
     bool IsEnter(const int& x, const int& y, const SDL_Rect& rect);
+
+    int GetRandInSpace(int s1, int s2);
 }
 
 

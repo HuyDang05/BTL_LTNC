@@ -1,5 +1,6 @@
 #include "Boss.h"
 #include "stdafx.h"
+#include "Common_Function.h"
 
 BossObject::BossObject(){
 
@@ -10,6 +11,8 @@ BossObject::BossObject(){
 
     x_val_ = 0;
     y_val_ = 0;
+    flag_moving = 0;
+    val_moving = 0;
 
 }
 
@@ -67,26 +70,55 @@ void BossObject::MakeBullet(SDL_Surface* des, const int& x_limit, const int& y_l
  
   
 void BossObject::HandleMove(const int& x_border, const int& y_border){
-    if(rect_.x > 1200){
-    rect_.x -= x_val_;}
-  
-    
-        if(rect_.y < 0){
-            rect_.y += y_val_;}
-        else if(rect_.y > 300){
-            rect_.y -= y_val_;}
-        int rand_y = rand()%500;
-       
-
-        if(rand_y > SCREEN_HEIGHT-UNDER_BOUND){
-            rand_y = SCREEN_HEIGHT*0.25;
+    if(rect_.x > 900) // boss se lui dan tu vi tri ban dau ve 1200
+    {
+        // bat dau -x_value khi boss o vi tri > 1200
+        rect_.x -= x_val_;
+    }
+    else
+    {
+        // khi boss bat dau ve den vi tri 1200
+        // kiem tra co di chuyen
+        if (flag_moving == 0) // neu co bang 0, thi di chuyen xuong duoi
+        {
+            // moi lan di chuyen thi + gia tri di chuyen vao bien val_moving
+            val_moving += y_val_;
+            if (val_moving > 400) // khi tong gia tri di chuyen > 300
+            {
+                val_moving = 0;  // dua gia tri = 0
+                flag_moving = 1; // dao co di chuyen
+            }
+            else
+            {
+                // neu tong gia tri chua vuot 300, thi cho phep di chuyen 
+                 rect_.y += y_val_;
+                 if (rect_.y > SCREEN_HEIGHT - UNDER_BOUND)
+                 {
+                        val_moving = 0;
+                        flag_moving = 1;
+                 }
+            }
         }
-        rect_.y = rand_y;
-
-        
-    
-
-
+        else
+        {
+            // khi co flag == 1, thi cung tuong tu tinh tong luong di chuyen nguoc lai
+             val_moving += y_val_;
+             if (val_moving > 400)
+             {
+                val_moving = 0;
+                flag_moving = 0;
+              }
+              else
+              {
+                   rect_.y -= y_val_;
+                   if (rect_.y < 0)
+                   {
+                        val_moving = 0;
+                        flag_moving = 0;
+                   }
+              }
+        }
+    }
 }
 
 void BossObject::HandleInputAction(SDL_Event events){

@@ -1,4 +1,4 @@
-
+﻿
 #include "Common_Function.h"
 #include "stdafx.h"
 #include "MainObject.h"
@@ -9,9 +9,15 @@
 #include "SupportItem.h"
 #include "Boss.h"
 #include <iostream>
+#include "time.h"
+#include "ImpTime.h"
 
 TTF_Font* g_font_ = NULL;
 TTF_Font* g_font_menu = NULL;
+
+std::string bkgn_array [] = {"image\\bk1.png", "image\\bk2.png", "image\\bk3.png", "image\\bk4.png"};
+
+#define FRAMES_PER_SECOND 35
 
 bool Init(){
     if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -48,7 +54,8 @@ bool Init(){
 
 
 
-int main(int arc, char* argv[]){
+int main(int arc, char* argv[])
+{
     bool is_move_screen = true;
     double bkgn_x = 0;
     bool is_quit = false;
@@ -57,14 +64,16 @@ int main(int arc, char* argv[]){
         return 0;
     }
 
+    srand ( time(NULL) );
 
-
-    g_bkground = SDLCommonFunc::LoadImage("bk.png");
+again:
+    int rand_bkgn = SDLCommonFunc::GetRandInSpace(0, 3);
+    std::string s_bkgn = bkgn_array[rand_bkgn];
+    g_bkground = SDLCommonFunc::LoadImg(s_bkgn);
     if(g_bkground == NULL){
         return 0;
     }
 
-again:
     //make main HP
     Health health;
     health.Init();
@@ -87,7 +96,7 @@ again:
      gold.Init();
 
     
-    
+    int dem = 0;
 
     
     //make Mainobject
@@ -121,15 +130,8 @@ again:
 
 
     
+    int rand_y =   SDLCommonFunc::GetRandInSpace(0,  SCREEN_HEIGHT);
 
-
-    
-
-    int rand_y = rand()%500;
-    if(rand_y > SCREEN_HEIGHT){
-         rand_y = SCREEN_HEIGHT*0.25;
-    }
-    
     p_threat->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
  
     p_threat->set_x_val(SPEED_THREAT);
@@ -145,24 +147,24 @@ again:
 
     //make BossObject
    BossObject* p_bosses = new BossObject[BOSS];
-    for(int i = 0; i < BOSS; i++){
+    for(int i = 0; i < BOSS; i++)
+    {
         BossObject* p_boss = (p_bosses + i);
-        if(p_boss){
-    bool res = p_boss->LoadImg("UF2.png");
-    if(res == false) return 0;
-    int rand_y = rand()%500;
-    if(rand_y > SCREEN_HEIGHT){
-         rand_y = SCREEN_HEIGHT*0.25;
-    }
-    
-    p_boss->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
- 
-    p_boss->set_x_val(SPEED_BOSS);
-    p_boss->set_y_val(SPEED_BOSS);
-    BulletObject * p_bullet = new BulletObject();
+        if(p_boss)
+        {
+            bool res = p_boss->LoadImg("UF2.png");
+            if(res == false) 
+                return 0;
 
-       p_boss->InitBullet(p_bullet);
-     }}
+            int rand_y_boss = SDLCommonFunc::GetRandInSpace(0, SCREEN_HEIGHT - UNDER_BOUND);
+            p_boss->SetRect(SCREEN_WIDTH + i*800, rand_y_boss-125);
+            p_boss->set_x_val(SPEED_BOSS);
+            p_boss->set_y_val(SPEED_BOSS);
+            BulletObject * p_bullet = new BulletObject();
+
+            p_boss->InitBullet(p_bullet);
+        }
+     }
  
     
     int score_val = 0;
@@ -186,10 +188,23 @@ again:
 
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     
-   
+    // doc hieu phan duoi day nhe, ky thuat fps
+    // fps là biến quản lý kỹ thuật fps trong game
+    // hiểu đơn giả là tạo ra sự cân bằng thời gian trong game
+    // Mỗi vòng lặp while ở dưới có thể chạy với lượng thời gian khác nhau
+    // lần 1: chạy hết 100 ms
+    // lần 2: chạy hết 40 ms
+    // lần 3: chạy hết 60 ms
+    // Điều đó tạo ra sự chênh lệch thời gian và hiệu ứng hình ảnh ko đẹp
+    // fps tạo ra một mức thời gian tối tiêu cho phép. ví dụ 80s.
+    // Mọi vòng lặp dưới 80s sẽ được delay cho đên khi đủ 80s ới kết thúc.
+    // Kỹ thuật này có thể xem chi tiết video trên youtbe
+    ImpTimer fps;
+
     //ENTER GAME
     while(!is_quit){
         
+          fps.start();
         while(SDL_PollEvent(&g_even)){
             if(g_even.type == SDL_QUIT){
                 is_quit = true;
@@ -316,7 +331,15 @@ again:
                     bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_boss->GetRect());
                     if(res_col){
                         if(slvc > 20){
+                            dem++;
+                            std::cout << dem << " ";
                         score_val++;
+                        if(dem == 2){
+        int menu_end = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
+                        if (menu_end == 1)
+                        {  
+                           return 0;
+                            }}
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
                             int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
@@ -359,13 +382,6 @@ again:
         }//
         }
 
-        
-
-
-       
-
-
-
         //Implement main
         human_object.HandleMove();
         human_object.Show(g_screen);
@@ -374,11 +390,6 @@ again:
         //Show health
             health.Render(g_screen);
 
-      
-           
-            
-
-        
 
         // Implement threat object
         for(int i = 0; i < THREAT; i++){
@@ -568,7 +579,16 @@ again:
 
         //Update screen
         if(SDL_Flip(g_screen) == -1) return 0;
+
+
+        // cân bằng thời gian cho mỗi vòng lặp game
+        if (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)
+        {
+            SDL_Delay((1000 / FRAMES_PER_SECOND) - fps.get_ticks());
+        }
     }
+
+    fps.stop();
 
 
     for (int i = 0; i < THREAT; i++)
@@ -587,6 +607,11 @@ again:
 
     SDLCommonFunc::Cleanup();
     SDL_Quit();
+
+    
+
+
+
 
     return 0;
 

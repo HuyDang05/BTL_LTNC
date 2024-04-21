@@ -18,7 +18,7 @@ BaseObject::~BaseObject(){
 bool BaseObject::LoadImg(const char* file_name){
 
     Free();
-    p_object_ = SDLCommonFunc::LoadImage(file_name);
+    p_object_ = SDLCommonFunc::LoadImg(file_name);
     if(p_object_ == NULL) return false;
     return true;
 }

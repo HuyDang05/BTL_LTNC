@@ -33,7 +33,8 @@ class BossObject : public BaseObject{
 private:
     int x_val_;
     int y_val_;
-
+    int flag_moving;
+    int val_moving;
      std::vector<BulletObject*> p_bullet_list_;
 };
 
