@@ -14,6 +14,8 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     if(g_img_menu == NULL){
         return 0;
     }
+    
+    TTF_Font* font_ins =  TTF_OpenFont("game.ttf", 40);
 
     const int item_num = 3;
     SDL_Rect pos_arr[item_num];
@@ -30,15 +32,15 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     
     TextObject text_menu[item_num];
 
-    text_menu[0].SetText("Play Game");
+    text_menu[0].SetText("PLAY GAME");
     text_menu[0].SetColor(TextObject::BLACK_TEXT);
     text_menu[0].SetRect(pos_arr[0].x, pos_arr[0].y);
 
-    text_menu[1].SetText("Exit Game");
+    text_menu[1].SetText("EXIT GAME");
     text_menu[1].SetColor(TextObject::BLACK_TEXT);
     text_menu[1].SetRect(pos_arr[1].x, pos_arr[1].y);
 
-    text_menu[2].SetText("Guide");
+    text_menu[2].SetText("GUIDE");
     text_menu[2].SetColor(TextObject::BLACK_TEXT);
     text_menu[2].SetRect(pos_arr[2].x, pos_arr[2].y);
 
@@ -51,7 +53,7 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
     {
         SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
         for(int i = 0; i < item_num; i++){
-            text_menu[i].MakeText(font, des);
+            text_menu[i].MakeText(font_ins, des);
     }
         while (SDL_PollEvent(&m_event))
         {
@@ -509,8 +511,156 @@ int SDLCommonFunc::MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, in
     return 1;
 }
 
+int SDLCommonFunc::MakeMenu4(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num){
+    g_img_menu = LoadImg("win.png");
+    if(g_img_menu == NULL){
+        return 0;
+    }
+     TTF_Font* font_ins =  TTF_OpenFont("game.ttf", 40);
+     
+
+    TextObject result1;
+    result1.SetColor(TextObject::BLACK_TEXT);
+    std::string str_val1 = "CONGRATULATION !";
+    result1.SetText(str_val1);
+    result1.SetRect(350, 50);
+
+    TextObject result2;
+    result2.SetColor(TextObject::BLACK_TEXT);
+    std::string str_val2 = "YOU WIN";
+    result2.SetText(str_val2);
+    result2.SetRect(500, 100);
+
+      //Show score 
+        TextObject mark;
+        std::string val_str_mark = std::to_string(score_val);
+        std::string strMark("SCORE : ");
+        strMark += val_str_mark;
+        mark.SetText(strMark);
+        mark.SetRect(500, 200);
+     
+     //Show gold
+        TextObject gold;
+        std::string val_str_gold = std::to_string(gold_num);
+        std::string strGold("GOLD : ");
+        strGold += val_str_gold;
+
+        gold.SetText(strGold);
+        
+        gold.SetRect(500, 300);
+
+        
+
+    const int item_num = 2;
+    SDL_Rect pos_arr[item_num];
+
+    pos_arr[0].x = 100;
+    pos_arr[0].y = 500;
+
+    pos_arr[1].x = 850;
+    pos_arr[1].y = 500;
+    
+    TextObject text_menu[item_num];
+
+    text_menu[0].SetText("QUIT");
+    text_menu[0].SetColor(TextObject::BLACK_TEXT);
+    text_menu[0].SetRect(pos_arr[0].x, pos_arr[0].y);
+
+    text_menu[1].SetText("PLAY AGAIN");
+    text_menu[1].SetColor(TextObject::BLACK_TEXT);
+    text_menu[1].SetRect(pos_arr[1].x, pos_arr[1].y);
+
+    bool choose[item_num] = {0,0};
+    int x_mouse = 0;
+    int y_mouse  = 0;
+
+    SDL_Event m_event;
+    while (true)
+    {
+        SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
+        result1.MakeText(font_ins, des);
+        result2.MakeText(font_ins, des);
+        mark.MakeText(font_ins, des);
+        gold.MakeText(font_ins, des);
+
+        for(int i = 0; i < item_num; i++){
+            text_menu[i].MakeText(font, des);
+    }
+        while (SDL_PollEvent(&m_event))
+        {
+            switch(m_event.type){
+            case SDL_QUIT:{
+                Mix_PlayChannel(-1, g_sound_choose[0], 0);
+                return 1;}
+            case SDL_MOUSEMOTION:
+                {
+                    x_mouse = m_event.motion.x;
+                    y_mouse = m_event.motion.y;
+
+                    for(int i = 0; i < item_num; i++){
+                        if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
+                            if(choose[i] == false){
+                                choose[i] = 1;
+                                text_menu[i].SetColor(TextObject::RED_TEXT);
+                            }
+
+
+                        }
+                        else{
+                            if(choose[i] == true){
+                                choose[i] = 0;
+                                text_menu[i].SetColor(TextObject::BLACK_TEXT);
+                            }
+
+
+
+                        }
+
+
+                    }
+
+                }
+                break;
+
+            case SDL_MOUSEBUTTONDOWN:
+                {    Mix_PlayChannel(-1, g_sound_choose[0], 0);
+                    x_mouse = m_event.button.x;
+                    y_mouse = m_event.button.y;
+                     for(int i = 0; i < item_num; i++){
+                    if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
+                            return i;
+
+
+                        }
+                }
+                }
+                break;
+            case SDL_KEYDOWN:
+                if(m_event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    return 1;}
+
+            default:
+                break;
+
+
+
+            }
+        }
+
+         SDL_Flip(des);
+    }
+
+
+   
+    return 1;
+}
+
+
+
 int SDLCommonFunc::GetRandInSpace(int s1, int s2)
 {
     int ret = s1 + ( std::rand() % ( s2 - s1 + 1 ) );
     return ret;
 }
+

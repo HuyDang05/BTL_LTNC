@@ -62,6 +62,7 @@ namespace SDLCommonFunc{
     int  MakeMenu(SDL_Surface* des, TTF_Font* font);
     int  MakeMenu2(SDL_Surface* des, TTF_Font* font);
     int  MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num);
+    int  MakeMenu4(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num);
     bool IsEnter(const int& x, const int& y, const SDL_Rect& rect);
 
     int GetRandInSpace(int s1, int s2);

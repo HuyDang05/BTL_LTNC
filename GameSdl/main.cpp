@@ -333,13 +333,43 @@ again:
                         if(slvc > 20){
                             dem++;
                             std::cout << dem << " ";
-                        score_val++;
+                        score_val += 5;
                         if(dem == 2){
-        int menu_end = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
-                        if (menu_end == 1)
+                   int menu_end = SDLCommonFunc::MakeMenu4(g_screen, g_font_menu , score_val, gold_num);
+                        
+
+                        if (menu_end == 0)
                         {  
-                           return 0;
-                            }}
+                           is_quit = true;
+                           continue;
+                        }
+                        else 
+                        {
+
+                                for (int i = 0; i < THREAT; i++)
+                                {
+                                    (p_threats+i)->Free();
+                                }
+
+                                health.Free();
+                                time.Free();
+                                score.Free();
+                                gold_text.Free();
+                                gold.Free();
+                                human_object.Free();
+                                exp_main.Free();
+                                exp_threats.Free();
+
+                                goto again;
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        }
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
                             int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
