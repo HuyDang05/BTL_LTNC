@@ -17,7 +17,7 @@ const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_WIDTH = 1350;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
-const int SPEED_SCREEN = 6;
+const int SPEED_SCREEN = 7;
 
 //Main
 const int POS_X_START_MAIN_OBJ  = 100;
@@ -26,15 +26,23 @@ const int SPEED_MAIN_OBJECT     = 10;
 const int SPEED_BULLET_MAIN     = 20;
 
 //Threat
-const int THREAT = 3;
-const int SPEED_THREAT = 3;
-const int SPEED_BULLET_THREAT = 10;
+const int THREAT = 4;
+const int SPEED_THREAT = 6;
+const int SPEED_BULLET_THREAT = 15;
 const int UNDER_BOUND = 200;
 const int VAL_OFFSET_START_POST_THREATS = 800;
 
-const int BOSS = 2;
-const int SPEED_BULLET_BOSS = 15;
-const int SPEED_BOSS = 5;
+//BOSS
+const int HEALTH_BOSS = 25;
+const int BOSS = 3;
+const int SPEED_BULLET_BOSS = 18;
+const int SPEED_BOSS = 8;
+const int NUM_BOSS_TO_WIN = 7;
+
+//EXTRA CONDITION
+const int TIME_TO_WIN = 100;
+const int SCORE_TO_WIN = 100;
+const int EX_NUM_BOSS = 4;
 
 
 
@@ -44,7 +52,7 @@ static SDL_Surface* g_img_menu = NULL;
 static SDL_Surface* g_img_instruct = NULL;
 static SDL_Event g_even;
 
-
+//SOUND
 static Mix_Chunk* g_sound_bullet[2];
 static Mix_Chunk* g_sound_exp[2];
 static Mix_Chunk* g_sound_bgr[1];

@@ -280,11 +280,11 @@ int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
     
     TextObject text_menu[item_num];
 
-    text_menu[0].SetText("Back");
+    text_menu[0].SetText("BACK");
     text_menu[0].SetColor(TextObject::BLACK_TEXT);
     text_menu[0].SetRect(pos_arr[0].x, pos_arr[0].y);
 
-    text_menu[1].SetText("Continue");
+    text_menu[1].SetText("CONTINUE");
     text_menu[1].SetColor(TextObject::BLACK_TEXT);
     text_menu[1].SetRect(pos_arr[1].x, pos_arr[1].y);
 

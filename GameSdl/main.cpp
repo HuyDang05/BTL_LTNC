@@ -56,24 +56,28 @@ bool Init(){
 
 int main(int arc, char* argv[])
 {
+
+again:
+    
     bool is_move_screen = true;
     double bkgn_x = 0;
     bool is_quit = false;
     
+
     if(Init() == false){
         return 0;
     }
 
     srand ( time(NULL) );
 
-again:
+
     int rand_bkgn = SDLCommonFunc::GetRandInSpace(0, 3);
     std::string s_bkgn = bkgn_array[rand_bkgn];
     g_bkground = SDLCommonFunc::LoadImg(s_bkgn);
     if(g_bkground == NULL){
         return 0;
     }
-
+    
     //make main HP
     Health health;
     health.Init();
@@ -81,6 +85,7 @@ again:
     //make time
     TextObject time;
     time.SetColor(TextObject::BLACK_TEXT);
+    
 
     //make score
     TextObject score;
@@ -96,7 +101,7 @@ again:
      gold.Init();
 
     
-    int dem = 0;
+    
 
     
     //make Mainobject
@@ -146,6 +151,8 @@ again:
         }}
 
     //make BossObject
+   double damage_to_boss = 0;
+   int num_boss_die = 0;
    BossObject* p_bosses = new BossObject[BOSS];
     for(int i = 0; i < BOSS; i++)
     {
@@ -169,7 +176,7 @@ again:
     
     int score_val = 0;
     int gold_num = 0;
-    double slvc = 0;
+    
 
 
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
@@ -200,11 +207,14 @@ again:
     // Mọi vòng lặp dưới 80s sẽ được delay cho đên khi đủ 80s ới kết thúc.
     // Kỹ thuật này có thể xem chi tiết video trên youtbe
     ImpTimer fps;
+    Uint32 iniTime = SDL_GetTicks()/1000;
+    std::cout<<iniTime<<"\n";
 
     //ENTER GAME
     while(!is_quit){
-        
+       
           fps.start();
+        
         while(SDL_PollEvent(&g_even)){
             if(g_even.type == SDL_QUIT){
                 is_quit = true;
@@ -323,19 +333,19 @@ again:
                
             }
 
-                //Check collision main bullet with threats.
+                //Check collision main bullet with boss.
             std::vector<BulletObject*> bullet_list = human_object.GetBulletList();
             for(int j = 0; j < bullet_list.size(); j++){
                 BulletObject* p_bullet = bullet_list.at(j);
                 if(p_bullet != NULL){
                     bool res_col = SDLCommonFunc::IsCollision(p_bullet->GetRect(), p_boss->GetRect());
                     if(res_col){
-                        if(slvc > 20){
-                            dem++;
-                            std::cout << dem << " ";
-                        score_val += 5;
-                        if(dem == 2){
-                   int menu_end = SDLCommonFunc::MakeMenu4(g_screen, g_font_menu , score_val, gold_num);
+                        if(damage_to_boss >= HEALTH_BOSS){
+                            num_boss_die ++; std::cout << num_boss_die << " ";
+                           score_val += 5;
+                        if(num_boss_die == NUM_BOSS_TO_WIN){
+                           
+                            int menu_end = SDLCommonFunc::MakeMenu4(g_screen, g_font_menu , score_val, gold_num);
                         
 
                         if (menu_end == 0)
@@ -362,14 +372,7 @@ again:
 
                                 goto again;
                         }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        }
+                       }
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
                             int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
@@ -378,18 +381,18 @@ again:
                             exp_threats.SetRect(x_pos, y_pos);
                             exp_threats.ShowEx(g_screen);
 
-                            //Update screen
-                            if(SDL_Flip(g_screen) == -1) return 0;
 
                         }
 
                         p_boss->Renew(SCREEN_WIDTH + i*VAL_OFFSET_START_POST_THREATS);
                         human_object.DestroyBullet(j);
                         Mix_PlayChannel(-1, g_sound_exp[0], 0);
-                        slvc = 0;
+                        damage_to_boss = 0;
                         }
+
+
                         else {
-                            slvc += 0.18; 
+                            damage_to_boss += 0.18; 
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
                             int y_pos = p_bullet->GetRect().y - EX_HEIGHT*0.5;
@@ -398,8 +401,7 @@ again:
                             exp_threats.SetRect(x_pos, y_pos);
                             exp_threats.ShowEx(g_screen);
 
-                            //Update screen
-                            if(SDL_Flip(g_screen) == -1) return 0;
+                           
                         }
 
                         }
@@ -584,12 +586,10 @@ again:
         
         
 
+         std::string str_time = "TIME :";
         
-
-        //Show time
-        std::string str_time = "Time :";
         Uint32 time_val = SDL_GetTicks()/1000;
-        std::string str_val = std::to_string(time_val);
+        std::string str_val = std::to_string(time_val - iniTime);
         str_time += str_val;
 
         time.SetText(str_time);
@@ -599,12 +599,42 @@ again:
         
          //Show score 
         std::string val_str_score = std::to_string(score_val);
-        std::string strScore("Score :");
+        std::string strScore("SCORE :");
         strScore += val_str_score;
 
         score.SetText(strScore);
         score.MakeText(g_font_, g_screen);
         score.SetRect(30, 65);
+
+        if(time_val - iniTime > TIME_TO_WIN  && score_val < SCORE_TO_WIN && num_boss_die < EX_NUM_BOSS){
+            
+                    int menu = SDLCommonFunc::MakeMenu3(g_screen, g_font_menu, score_val, gold_num);
+                        if (menu == 0)
+                        {  
+                           is_quit = true;
+                           continue;
+                        }
+                        else 
+                        {
+
+                                for (int i = 0; i < BOSS; i++)
+                                {
+                                    (p_bosses+i)->Free();
+                                }
+                               
+                                health.Free();
+                                time.Free();
+                                score.Free();
+                                gold_text.Free();
+                                gold.Free();
+                                human_object.Free();
+                                exp_main.Free();
+                                exp_threats.Free();
+                                goto again;
+                        }
+
+        }
+
         
 
         //Update screen
