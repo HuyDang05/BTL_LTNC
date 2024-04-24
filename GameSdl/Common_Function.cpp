@@ -3,13 +3,14 @@
 #include "TextObject.h"
 #include <string>
 
+
  bool SDLCommonFunc::IsEnter(const int& x, const int& y, const SDL_Rect& rect){
       if(x >= rect.x && x < rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h) return true;
       return false;
   }
 
 int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
-    g_sound_choose[0] = Mix_LoadWAV("choose.wav");
+     g_sound_choose[0] = Mix_LoadWAV("choose.wav");
     g_img_menu = LoadImg("kgime.png");
     if(g_img_menu == NULL){
         return 0;
@@ -73,25 +74,16 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
                                 choose[i] = 1;
                                 text_menu[i].SetColor(TextObject::RED_TEXT);
                             }
-
-
                         }
                         else{
                             if(choose[i] == true){
                                 choose[i] = 0;
                                 text_menu[i].SetColor(TextObject::BLACK_TEXT);
                             }
-
-
-
                         }
-
-
                     }
-
                 }
                 break;
-
             case SDL_MOUSEBUTTONDOWN:
                 {   Mix_PlayChannel(-1, g_sound_choose[0], 0);
                     x_mouse = m_event.button.x;
@@ -99,30 +91,18 @@ int SDLCommonFunc::MakeMenu(SDL_Surface* des, TTF_Font* font){
                      for(int i = 0; i < item_num; i++){
                     if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
                             return i;
-
-
-                        }
-                }
+                         }
+                     }
                 }
                 break;
             case SDL_KEYDOWN:
                 if(m_event.key.keysym.sym == SDLK_ESCAPE)
                 {
                     return 1;}
-
-            default:
-                break;
-
-
-
             }
         }
-
          SDL_Flip(des);
-    }
-
-
-   
+    }   
     return 1;
 }
 
@@ -255,7 +235,8 @@ bool SDLCommonFunc::IsCollision(const SDL_Rect& object_a, const SDL_Rect& object
 
 
 int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
-    g_img_menu = LoadImg("instr.png");
+     g_sound_choose[0] = Mix_LoadWAV("choose.wav");
+    g_img_menu = LoadImg("instruct.png");
     if(g_img_menu == NULL){
         return 0;
     }
@@ -275,7 +256,7 @@ int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
     pos_arr[0].x = 100;
     pos_arr[0].y = 500;
 
-    pos_arr[1].x = 1000;
+    pos_arr[1].x = 900;
     pos_arr[1].y = 500;
     
     TextObject text_menu[item_num];
@@ -319,25 +300,16 @@ int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
                                 choose[i] = 1;
                                 text_menu[i].SetColor(TextObject::RED_TEXT);
                             }
-
-
                         }
                         else{
                             if(choose[i] == true){
                                 choose[i] = 0;
                                 text_menu[i].SetColor(TextObject::BLACK_TEXT);
                             }
-
-
-
                         }
-
-
                     }
-
                 }
                 break;
-
             case SDL_MOUSEBUTTONDOWN:
                 {    Mix_PlayChannel(-1, g_sound_choose[0], 0);
                     x_mouse = m_event.button.x;
@@ -345,35 +317,26 @@ int SDLCommonFunc::MakeMenu2(SDL_Surface* des, TTF_Font* font){
                      for(int i = 0; i < item_num; i++){
                     if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
                             return i;
-
-
-                        }
+                         }
+                     }
                 }
-                }
+         
                 break;
             case SDL_KEYDOWN:
                 if(m_event.key.keysym.sym == SDLK_ESCAPE)
                 {
                     return 1;}
-
-            default:
-                break;
-
-
-
             }
         }
-
          SDL_Flip(des);
     }
-
-
    
     return 1;
 }
 
 
 int SDLCommonFunc::MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num){
+    g_sound_choose[0] = Mix_LoadWAV("choose.wav");
     g_img_menu = LoadImg("demo.png");
     if(g_img_menu == NULL){
         return 0;
@@ -458,25 +421,16 @@ int SDLCommonFunc::MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, in
                                 choose[i] = 1;
                                 text_menu[i].SetColor(TextObject::RED_TEXT);
                             }
-
-
                         }
                         else{
                             if(choose[i] == true){
                                 choose[i] = 0;
                                 text_menu[i].SetColor(TextObject::BLACK_TEXT);
                             }
-
-
-
                         }
-
-
                     }
-
                 }
                 break;
-
             case SDL_MOUSEBUTTONDOWN:
                 {    Mix_PlayChannel(-1, g_sound_choose[0], 0);
                     x_mouse = m_event.button.x;
@@ -484,41 +438,30 @@ int SDLCommonFunc::MakeMenu3(SDL_Surface* des, TTF_Font* font, int score_val, in
                      for(int i = 0; i < item_num; i++){
                     if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
                             return i;
-
-
-                        }
+                         }
+                     }
                 }
-                }
+        
                 break;
             case SDL_KEYDOWN:
-                if(m_event.key.keysym.sym == SDLK_ESCAPE)
-                {
-                    return 1;}
-
-            default:
-                break;
-
-
-
+                if(m_event.key.keysym.sym == SDLK_ESCAPE){
+                        return 1;
+                    }
             }
         }
-
          SDL_Flip(des);
     }
-
-
-   
     return 1;
 }
 
 int SDLCommonFunc::MakeMenu4(SDL_Surface* des, TTF_Font* font, int score_val, int gold_num){
+     g_sound_choose[0] = Mix_LoadWAV("choose.wav");
     g_img_menu = LoadImg("win.png");
     if(g_img_menu == NULL){
         return 0;
     }
      TTF_Font* font_ins =  TTF_OpenFont("game.ttf", 40);
      
-
     TextObject result1;
     result1.SetColor(TextObject::BLACK_TEXT);
     std::string str_val1 = "CONGRATULATION !";
@@ -603,25 +546,17 @@ int SDLCommonFunc::MakeMenu4(SDL_Surface* des, TTF_Font* font, int score_val, in
                                 choose[i] = 1;
                                 text_menu[i].SetColor(TextObject::RED_TEXT);
                             }
-
-
                         }
                         else{
                             if(choose[i] == true){
                                 choose[i] = 0;
                                 text_menu[i].SetColor(TextObject::BLACK_TEXT);
                             }
-
-
-
                         }
-
-
                     }
-
                 }
-                break;
 
+                break;
             case SDL_MOUSEBUTTONDOWN:
                 {    Mix_PlayChannel(-1, g_sound_choose[0], 0);
                     x_mouse = m_event.button.x;
@@ -629,30 +564,21 @@ int SDLCommonFunc::MakeMenu4(SDL_Surface* des, TTF_Font* font, int score_val, in
                      for(int i = 0; i < item_num; i++){
                     if(IsEnter(x_mouse, y_mouse, text_menu[i].GetRect())){
                             return i;
-
-
-                        }
+                          }
+                     }
                 }
-                }
+    
                 break;
             case SDL_KEYDOWN:
                 if(m_event.key.keysym.sym == SDLK_ESCAPE)
                 {
                     return 1;}
-
-            default:
-                break;
-
-
-
             }
         }
 
          SDL_Flip(des);
     }
 
-
-   
     return 1;
 }
 

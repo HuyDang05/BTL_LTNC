@@ -17,7 +17,7 @@ const int HEIGHT_BACKGROUND = 600;
 const int SCREEN_WIDTH = 1350;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
-const int SPEED_SCREEN = 7;
+const int SPEED_SCREEN = 3;
 
 //Main
 const int POS_X_START_MAIN_OBJ  = 100;
@@ -37,15 +37,15 @@ const int HEALTH_BOSS = 25;
 const int BOSS = 3;
 const int SPEED_BULLET_BOSS = 18;
 const int SPEED_BOSS = 8;
-const int NUM_BOSS_TO_WIN = 7;
+const int NUM_BOSS_TO_WIN = 5;
 
 //EXTRA CONDITION
 const int TIME_TO_WIN = 100;
-const int SCORE_TO_WIN = 100;
-const int EX_NUM_BOSS = 4;
+const int SCORE_TO_WIN = 10;
+const int EX_NUM_BOSS = 3;
 
 
-
+//GLOBAL VARIABLE
 static SDL_Surface* g_screen = NULL;
 static SDL_Surface* g_bkground = NULL;
 static SDL_Surface* g_img_menu = NULL;

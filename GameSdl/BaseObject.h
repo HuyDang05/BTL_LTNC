@@ -5,9 +5,6 @@
 #include "stdafx.h"
 
 
-
-
-
 class BaseObject{
 public:
     BaseObject();

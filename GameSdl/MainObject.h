@@ -21,8 +21,7 @@ class MainObject : public BaseObject
     std::vector<BulletObject*> GetBulletList() const {return p_bullet_list_;}
     void MakeBullet(SDL_Surface* g_screen);
     void MainObject::DestroyBullet(const int idx);
-    /*void IncreaseGold();
-    int GetGoldCount() const{ return gold_count;}*/
+  
 private:
     int gold_count;
     int x_val_;

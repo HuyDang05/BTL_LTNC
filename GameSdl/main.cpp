@@ -38,7 +38,7 @@ bool Init(){
     g_sound_bgr[0] = Mix_LoadWAV("musicgame.wav");
     g_sound_gold[0] = Mix_LoadWAV("gold_sound.wav");
     g_sound_choose[0] = Mix_LoadWAV("choose.wav");
-    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL || g_sound_gold[0] == NULL) return false;
+    if(g_sound_bullet[0] == NULL || g_sound_bullet[1] == NULL || g_sound_exp[0] == NULL ||  g_sound_exp[1] == NULL || g_sound_bgr[0] == NULL || g_sound_gold[0] == NULL || g_sound_choose[0] == NULL) return false;
 
 
     //Load score text
@@ -68,7 +68,7 @@ again:
         return 0;
     }
 
-    srand ( time(NULL) );
+    srand (time(NULL));
 
 
     int rand_bkgn = SDLCommonFunc::GetRandInSpace(0, 3);
@@ -86,11 +86,9 @@ again:
     TextObject time;
     time.SetColor(TextObject::BLACK_TEXT);
     
-
     //make score
     TextObject score;
     score.SetColor(TextObject::BLACK_TEXT);
-
 
     //make text gold
     TextObject gold_text;
@@ -100,10 +98,6 @@ again:
     SupportItem gold;
      gold.Init();
 
-    
-    
-
-    
     //make Mainobject
     MainObject human_object;
     human_object.SetRect(POS_X_START_MAIN_OBJ,POS_Y_START_MAIN_OBJ);
@@ -130,25 +124,17 @@ again:
     for(int i = 0; i < THREAT; i++){
         ThreatObject* p_threat = (p_threats + i);
         if(p_threat){
-    bool res = p_threat->LoadImg("c2.png");
-    if(res == false) return 0;
+          bool res = p_threat->LoadImg("c2.png");
+          if(res == false) return 0;
 
 
-    
-    int rand_y =   SDLCommonFunc::GetRandInSpace(0,  SCREEN_HEIGHT);
-
+    int rand_y = SDLCommonFunc::GetRandInSpace(0, SCREEN_HEIGHT);
     p_threat->SetRect(SCREEN_WIDTH + i*800, rand_y-125);
- 
     p_threat->set_x_val(SPEED_THREAT);
-
     BulletObject * p_bullet = new BulletObject();
-
-       p_threat->InitBullet(p_bullet);
-
-       
-
-
-        }}
+    p_threat->InitBullet(p_bullet);
+        }
+    }
 
     //make BossObject
    double damage_to_boss = 0;
@@ -172,13 +158,10 @@ again:
             p_boss->InitBullet(p_bullet);
         }
      }
- 
-    
+    //init index
     int score_val = 0;
     int gold_num = 0;
-    
-
-
+    //make menu startgame
     int menu = SDLCommonFunc::MakeMenu(g_screen, g_font_menu);
     if (menu == 1)
     {  
@@ -195,20 +178,19 @@ again:
 
     Mix_PlayChannelTimed(-1, g_sound_bgr[0], -1, -1);
     
-    // doc hieu phan duoi day nhe, ky thuat fps
+    //  ky thuat fps
     // fps là biến quản lý kỹ thuật fps trong game
-    // hiểu đơn giả là tạo ra sự cân bằng thời gian trong game
+    // là tạo ra sự cân bằng thời gian trong game
     // Mỗi vòng lặp while ở dưới có thể chạy với lượng thời gian khác nhau
     // lần 1: chạy hết 100 ms
     // lần 2: chạy hết 40 ms
     // lần 3: chạy hết 60 ms
     // Điều đó tạo ra sự chênh lệch thời gian và hiệu ứng hình ảnh ko đẹp
     // fps tạo ra một mức thời gian tối tiêu cho phép. ví dụ 80s.
-    // Mọi vòng lặp dưới 80s sẽ được delay cho đên khi đủ 80s ới kết thúc.
+    // Mọi vòng lặp dưới 80s sẽ được delay cho đên khi đủ 80s mới kết thúc.
     // Kỹ thuật này có thể xem chi tiết video trên youtbe
     ImpTimer fps;
     Uint32 iniTime = SDL_GetTicks()/1000;
-    std::cout<<iniTime<<"\n";
 
     //ENTER GAME
     while(!is_quit){
@@ -245,12 +227,7 @@ again:
             p_boss->Show(g_screen);
             p_boss->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-
-           
-
-      
-
-            //Check collision threats bullet with main object
+            //Check collision boss bullet with main object
             bool is_col1 = false;
             std::vector<BulletObject*> bullet_arr = p_boss->GetBulletList();
             for(int b = 0; b < bullet_arr.size(); b++){
@@ -263,9 +240,7 @@ again:
                     }
                 }
             }
-             
-
-            //Check collision thr and main
+            //Check collision boss and main
             bool is_col2 = SDLCommonFunc::IsCollision(human_object.GetRect(), p_boss->GetRect());
             if(is_col2 || is_col1){
                 for(int ex = 0; ex < 4; ex++){
@@ -285,7 +260,6 @@ again:
                        return 0;}
                 }
                 Mix_PlayChannel(-1, g_sound_exp[1], 0);
-
 
                 if(health.GetNumber() > 1){
                     SDL_Delay(1500);
@@ -312,10 +286,7 @@ again:
                         else 
                         {
 
-                                for (int i = 0; i < BOSS; i++)
-                                {
-                                    (p_bosses+i)->Free();
-                                }
+                            for (int i = 0; i < BOSS; i++)  (p_bosses+i)->Free();
 
                                 health.Free();
                                 time.Free();
@@ -328,9 +299,7 @@ again:
 
                                 goto again;
                         }
-               
                 }
-               
             }
 
                 //Check collision main bullet with boss.
@@ -355,12 +324,8 @@ again:
                         }
                         else 
                         {
-
-                                for (int i = 0; i < THREAT; i++)
-                                {
-                                    (p_threats+i)->Free();
-                                }
-
+                           for (int i = 0; i < BOSS; i++) (p_bosses+i)->Free();
+                                
                                 health.Free();
                                 time.Free();
                                 score.Free();
@@ -371,7 +336,7 @@ again:
                                 exp_threats.Free();
 
                                 goto again;
-                        }
+                            }
                        }
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
@@ -389,9 +354,7 @@ again:
                         Mix_PlayChannel(-1, g_sound_exp[0], 0);
                         damage_to_boss = 0;
                         }
-
-
-                        else {
+                        else{
                             damage_to_boss += 0.18; 
                         for(int t = 0; t < 4; t++){
                             int x_pos = p_bullet->GetRect().x - EX_WIDTH*0.5;
@@ -400,19 +363,14 @@ again:
                             exp_threats.set_frame(t);
                             exp_threats.SetRect(x_pos, y_pos);
                             exp_threats.ShowEx(g_screen);
-
-                           
-                        }
-
-                        }
-
-
-                    }
+                                    }
+                                }
+                            }
+                         }
+                      }
+                   } 
                 }
-            }
-          }
-        }//
-        }
+             }
 
         //Implement main
         human_object.HandleMove();
@@ -431,11 +389,6 @@ again:
             p_threat->Show(g_screen);
             p_threat->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-
-           
-
-      
-
             //Check collision threats bullet with main object
             bool is_col1 = false;
             std::vector<BulletObject*> bullet_arr = p_threat->GetBulletList();
@@ -450,8 +403,7 @@ again:
                 }
             }
              
-
-            //Check collision thr and main
+            //Check collision threat and main
             bool is_col2 = SDLCommonFunc::IsCollision(human_object.GetRect(), p_threat->GetRect());
             if(is_col2 || is_col1){
                 for(int ex = 0; ex < 4; ex++){
@@ -514,11 +466,8 @@ again:
 
                                 goto again;
                         }
-               
                 }
-               
             }
-
                 //Check collision main bullet with threats.
             std::vector<BulletObject*> bullet_list = human_object.GetBulletList();
             for(int j = 0; j < bullet_list.size(); j++){
@@ -543,19 +492,16 @@ again:
                         p_threat->Renew(SCREEN_WIDTH + i*VAL_OFFSET_START_POST_THREATS);
                         human_object.DestroyBullet(j);
                         Mix_PlayChannel(-1, g_sound_exp[0], 0);
-                    }
-                }
-            }
-          }
-        }//
+                     }
+                 }
+              }
+           }
+        }
 
         //Show gold 
         gold.Render(g_screen);
         bool is_co = SDLCommonFunc::IsCollision(human_object.GetRect(), gold.GetRect());
-      
-
-
-           
+             
            if(is_co){
                Mix_PlayChannel(-1, g_sound_gold[0], 0);
                gold_num++;
@@ -570,38 +516,28 @@ again:
               health.Render(g_screen);
               gold_num = gold_num - 30;
            }
-        
-
-           
-          
 
         //Show gold
            std::string val_str_gold = std::to_string(gold_num);
-        std::string strGold("Gold :");
+        std::string strGold("GOLD :");
         strGold += val_str_gold;
-
         gold_text.SetText(strGold);
         gold_text.MakeText(g_font_, g_screen);
         gold_text.SetRect(30, 40);
         
-        
-
-         std::string str_time = "TIME :";
-        
+        //Show time
+        std::string str_time = "TIME :";
         Uint32 time_val = SDL_GetTicks()/1000;
         std::string str_val = std::to_string(time_val - iniTime);
         str_time += str_val;
-
         time.SetText(str_time);
         time.SetRect(30, 90);
         time.MakeText(g_font_, g_screen);
 
-        
          //Show score 
         std::string val_str_score = std::to_string(score_val);
         std::string strScore("SCORE :");
         strScore += val_str_score;
-
         score.SetText(strScore);
         score.MakeText(g_font_, g_screen);
         score.SetRect(30, 65);
@@ -632,10 +568,7 @@ again:
                                 exp_threats.Free();
                                 goto again;
                         }
-
-        }
-
-        
+                 }
 
         //Update screen
         if(SDL_Flip(g_screen) == -1) return 0;
@@ -649,7 +582,6 @@ again:
     }
 
     fps.stop();
-
 
     for (int i = 0; i < THREAT; i++)
     {
@@ -667,11 +599,6 @@ again:
 
     SDLCommonFunc::Cleanup();
     SDL_Quit();
-
-    
-
-
-
 
     return 0;
 
