@@ -31,6 +31,7 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 |     K    |  LASER BULLET |
 |     L    |  DART BULLET  |
 
+## PREVIEW :
 ![a1](https://github.com/HuyDang05/My_Game/assets/161727773/e4c42436-e309-45ef-a8c0-5f8ef5c2c982)
 ![a2](https://github.com/HuyDang05/My_Game/assets/161727773/4fe7d57f-9f92-477e-868c-422727b8e848)
 ![a3](https://github.com/HuyDang05/My_Game/assets/161727773/e76c53bd-e8e4-4b1b-9c4e-5cef3052927c)
@@ -38,14 +39,22 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 ![a4](https://github.com/HuyDang05/My_Game/assets/161727773/1cd84857-1f52-4714-ac55-83e86fa74863)
 ![a5](https://github.com/HuyDang05/My_Game/assets/161727773/ced6f00c-ffa3-4f92-8205-31781ac45e6d)
 ## GRAPHIC :
+### Các loại đạn
+![dartbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/7f9d4870-9b61-4c5a-8204-f592b9483d89)
+![laserbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/391e5a32-a6cc-41a0-9cd3-1565d03de254)
 ![bl4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/bc340b9a-b545-4a67-8c6b-7d5443888d3a)
 ![bl8](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/d11f5a72-096f-47b2-ac8c-4d7a5cdb55ae)
-![c2](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/4c50f4bb-cdf2-4811-a728-9d4842a9adbb)
+### MAIN :
 ![c3](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/1c44586e-d904-4199-8f4d-70fed736b96d)
+### THREATS :
+![c2](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/4c50f4bb-cdf2-4811-a728-9d4842a9adbb)
+### BOSS :
 ![c4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/b3595259-b038-4470-9805-42bf75659317)
-![dartbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/7f9d4870-9b61-4c5a-8204-f592b9483d89)
+### Vụ nổ :
 ![expmain](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/51ff742b-ebfd-4347-92c8-cfeab0596d0a)
+### Vật phẩm hỗ trợ :
 ![gold](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/3be7b99c-a9e2-4941-83e6-c7a79bc4af0b)
+### Sinh mệnh :
 ![health](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/26c91058-4f90-4887-a543-ffcd2c02d9e4)
 
 
@@ -77,7 +86,7 @@ menu, điều kiện phụ về thời gian và điểm số.
 - Chương trình rất dễ để refactor cũng như update tính năng.
 - Học được cách thêm và sắp xếp các khối câu lệnh để chương trình chạy mượt mà, hợp lý, cách clean, tối ưu code và sử lý các mạch logic chính của game.
 - Biết thêm về thư viện SDL2 : cách sử dụng, các hàm để xử lý hình ảnh, âm thanh , chữ.
-### Hướng phát triển 
+### Hướng phát triển :
 - Cập nhật tính năng bảng xếp hạng, sau mỗi lần chơi người chơi sẽ được nhập tên để lưu lại kết quả chơi của mình.
 - Thêm nhiều loại vật phẩm hỗ trợ có tính năng khác nhau.
 - Thêm các chướng ngại vật và bom để tạo thử thách cho người chơi.
