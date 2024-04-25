@@ -10,6 +10,9 @@
 - Mã sinh viên: 23020671
 - Bài tập lớn: AIR BATTLE (INT2215_52 - Lập trình nâng cao)
 ## SET UP :
+- Truy cập vào link drive sau  https://drive.google.com/file/d/11CTW4Ws1uKX2mTCJGizQmrG9qtOG_tcW/view?usp=sharing 
+- Tải file AIR BATTLE.rar về, giải nén thành folder.
+- Vào folder AIR BATTLE , vào folder Debug, tìm và chạy file AIR BATTLE.exe để bắt đầu chơi.
 
 
 
@@ -77,7 +80,7 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 ### Nguồn tham khảo :
 
 - Cách cài đặt SDL2.0 trên Visual Studio Code: tham khảo trên reddit, stack overflow và Lazy'Foo.
-- Cách sử dụng thư viện SDL2.0, quản lý chương trình: Thảo khảo trên Lazy'Foo và các video của cô Nguyễn Thị Minh Châu,
+- Cách sử dụng thư viện SDL2.0, quản lý chương trình: Thảo khảo trên Lazy'Foo và các video của cô Trần Thị Minh Châu,
  stack overflow, kênh youtube: Let's Make Games, Madsycode, Phát Triển Phần Mềm 123 A-Z.
 - Hình ảnh: tìm kiếm trên google và một số hình đơn giản tự design.
 - Âm thanh: Tự tra trên google, pixabay.com
