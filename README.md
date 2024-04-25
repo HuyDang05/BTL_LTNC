@@ -32,14 +32,19 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 |     L    |  DART BULLET  |
 
 ## PREVIEW :
+### MENU BẮT ĐẦU :
 ![a1](https://github.com/HuyDang05/My_Game/assets/161727773/e4c42436-e309-45ef-a8c0-5f8ef5c2c982)
+### MENU HƯỚNG DẪN :
 ![a2](https://github.com/HuyDang05/My_Game/assets/161727773/4fe7d57f-9f92-477e-868c-422727b8e848)
 ![a3](https://github.com/HuyDang05/My_Game/assets/161727773/e76c53bd-e8e4-4b1b-9c4e-5cef3052927c)
+### CHIẾN ĐẤU VỚI BOSS :
 ![a6](https://github.com/HuyDang05/My_Game/assets/161727773/96d1f7c4-8689-414f-9804-e42be8e59a7a)
+### MENU THUA :
 ![a4](https://github.com/HuyDang05/My_Game/assets/161727773/1cd84857-1f52-4714-ac55-83e86fa74863)
+### MENU THẮNG :
 ![a5](https://github.com/HuyDang05/My_Game/assets/161727773/ced6f00c-ffa3-4f92-8205-31781ac45e6d)
 ## GRAPHIC :
-### Các loại đạn
+### Các loại đạn 
 ![dartbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/7f9d4870-9b61-4c5a-8204-f592b9483d89)
 ![laserbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/391e5a32-a6cc-41a0-9cd3-1565d03de254)
 ![bl4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/bc340b9a-b545-4a67-8c6b-7d5443888d3a)
