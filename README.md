@@ -1,6 +1,10 @@
 # AIR BATTLE 
 ## TABLE OF CONTENTS
-* [INTRODUCTION](introduction)
+* [INTRODUCTION](#introduction)
+* [DISCRIPTION](#discription)
+* [CONTROL](#control)
+* [SEE ALSO](#see-also)
+* [CONCLUSION](#conclusion)
  ## INTRODUCTION
 - Họ và tên: 'Đặng Quang Huy - K68J - UET'
 - Mã sinh viên: 23020671
@@ -16,7 +20,7 @@
 - Game có đầy đủ các chức năng hỗ trợ người chơi , thoát game , xem mô tả cách chơi, sử dụng phím esc để dừng game, chơi lại ...
 - Có âm thanh nền phát trong suốt lúc chơi và các âm thanh về bắn đạn, vụ nổ gây cảm giác kích thích, hứng thú cho người chơi.
 - AIR BATTLE chắc chắn sẽ không khiến cho người chơi phải thất vọng với những tính năng, đồ hoạ cực kì hấp dẫn, sinh động.
-## CONTROL :
+## CONTROL
 | **KEYS** | ** FUNCTION** |
 |:--------:|:-------------:|
 |     W    |       UP      |
@@ -34,7 +38,7 @@
 ![a5](https://github.com/HuyDang05/My_Game/assets/161727773/ced6f00c-ffa3-4f92-8205-31781ac45e6d)
 
 
-## SEE ALSO :
+## SEE ALSO
 ### Các kỹ thuật sử dụng :
 - Thư viện SDL2.0, ngôn ngữ C++, IDE : Visual Studio Code.
 - Sử dụng kỹ thuật tách file cpp và file header để dễ quản lý chương trình
@@ -55,7 +59,7 @@
 - Logic chính của game: tham khảo kênh youtube : Phát Triển Phần Mềm 123 A-Z và tự phát triển thêm ở các vật phẩm bổ trợ, đối tượng boss.
 menu, điều kiện phụ về thời gian và điểm số.
 
-## CONCLUSION :
+## CONCLUSION
 - Em thấy mình đã cải thiện được rất nhiều kỹ năng trong việc tư duy logic, xử lý va chạm, viết code. 
 - Khả năng sáng tạo, lên ý tưởng, các kỹ năng về chỉnh sửa hình ảnh , âm thanh.
 - Học được cách setup môi trường, sử dụng thư viện ngoài.
@@ -68,5 +72,5 @@ menu, điều kiện phụ về thời gian và điểm số.
 - Thêm các chướng ngại vật và bom để tạo thử thách cho người chơi.
 - Thêm menu chọn độ khó  để người chơi có thể chọn tốc độ và số lượng địch tuỳ thích, phù hợp với khả năng chơi của mình.
 - Thêm chế độ 2 người chơi với nhau hoặc 2 người chơi với máy.
-- 
+
   
