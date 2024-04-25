@@ -25,7 +25,7 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 - Có âm thanh nền phát trong suốt lúc chơi và các âm thanh về bắn đạn, vụ nổ gây cảm giác kích thích, hứng thú cho người chơi.
 - AIR BATTLE chắc chắn sẽ không khiến cho người chơi phải thất vọng với những tính năng, đồ hoạ cực kì hấp dẫn, sinh động.
 ## CONTROL
-| **KEYS** | ** FUNCTION** |
+| **KEYS** |    FUNCTION   |
 |:--------:|:-------------:|
 |     W    |       UP      |
 |     S    |      DOWN     |
