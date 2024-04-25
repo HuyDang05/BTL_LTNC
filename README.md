@@ -37,6 +37,16 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 ![a6](https://github.com/HuyDang05/My_Game/assets/161727773/96d1f7c4-8689-414f-9804-e42be8e59a7a)
 ![a4](https://github.com/HuyDang05/My_Game/assets/161727773/1cd84857-1f52-4714-ac55-83e86fa74863)
 ![a5](https://github.com/HuyDang05/My_Game/assets/161727773/ced6f00c-ffa3-4f92-8205-31781ac45e6d)
+## GRAPHIC :
+![bl4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/bc340b9a-b545-4a67-8c6b-7d5443888d3a)
+![bl8](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/d11f5a72-096f-47b2-ac8c-4d7a5cdb55ae)
+![c2](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/4c50f4bb-cdf2-4811-a728-9d4842a9adbb)
+![c3](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/1c44586e-d904-4199-8f4d-70fed736b96d)
+![c4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/b3595259-b038-4470-9805-42bf75659317)
+![dartbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/7f9d4870-9b61-4c5a-8204-f592b9483d89)
+![expmain](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/51ff742b-ebfd-4347-92c8-cfeab0596d0a)
+![gold](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/3be7b99c-a9e2-4941-83e6-c7a79bc4af0b)
+![health](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/26c91058-4f90-4887-a543-ffcd2c02d9e4)
 
 
 ## SEE ALSO
