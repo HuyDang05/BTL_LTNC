@@ -1,6 +1,6 @@
 # AIR BATTLE 
  ## INTRODUCTION
-- Họ và tên: Đặng Quang Huy - K68J - UET
+- Họ và tên: 'Đặng Quang Huy - K68J - UET'
 - Mã sinh viên: 23020671
 - Bài tập lớn: AIR BATTLE (INT2215_52 - Lập trình nâng cao)
 
@@ -34,7 +34,7 @@
 
 ## SEE ALSO :
 ### Các kỹ thuật sử dụng :
-- Thư viện SDL2.0
+- Thư viện SDL2.0, ngôn ngữ C++, IDE : Visual Studio Code.
 - Sử dụng kỹ thuật tách file cpp và file header để dễ quản lý chương trình
 - Tạo đối tượng đa dạng : nhân vật chính, máy bay địch, máy bay boss địch, vật phẩm hỗ trợ, đạn bắn, text và HP của nhân vật chính.
 - Dùng các kiến thức toán học để xử lý va chạm giữa các đối tượng : đạn của nhân vật chính với địch, nhân vật chính với vật phẩm hỗ trợ, ...
@@ -66,4 +66,5 @@ menu, điều kiện phụ về thời gian và điểm số.
 - Thêm các chướng ngại vật và bom để tạo thử thách cho người chơi.
 - Thêm menu chọn độ khó  để người chơi có thể chọn tốc độ và số lượng địch tuỳ thích, phù hợp với khả năng chơi của mình.
 - Thêm chế độ 2 người chơi với nhau hoặc 2 người chơi với máy.
+- 
   
