@@ -69,7 +69,7 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 ## SEE ALSO
 ### Các kỹ thuật sử dụng :
 - Thư viện SDL2.0, ngôn ngữ C++, IDE : Visual Studio Code.
-- Sử dụng kỹ thuật tách file cpp và file header để dễ quản lý chương trình
+- Sử dụng kỹ thuật lập trình hướng đối tượng, tách file cpp và file header để dễ quản lý chương trình
 - Tạo đối tượng đa dạng : nhân vật chính, máy bay địch, máy bay boss địch, vật phẩm hỗ trợ, đạn bắn, text và HP của nhân vật chính.
 - Dùng các kiến thức toán học để xử lý va chạm giữa các đối tượng : đạn của nhân vật chính với địch, nhân vật chính với vật phẩm hỗ trợ, ...
 - Xử lý thời gian, điểm số thao tác chuột và bàn phím, âm thanh, hình ảnh, chữ và random background khi vào chơi.
@@ -88,7 +88,7 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 menu, điều kiện phụ về thời gian và điểm số.
 
 ## CONCLUSION
-- Em thấy mình đã cải thiện được rất nhiều kỹ năng trong việc tư duy logic, xử lý va chạm, viết code. 
+- Cải thiện được rất nhiều kỹ năng trong việc tư duy logic, xử lý va chạm, viết code. 
 - Khả năng sáng tạo, lên ý tưởng, các kỹ năng về chỉnh sửa hình ảnh , âm thanh.
 - Học được cách setup môi trường, sử dụng thư viện ngoài.
 - Chương trình rất dễ để refactor cũng như update tính năng.
