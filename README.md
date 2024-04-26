@@ -14,7 +14,8 @@
 - Tải file AIR BATTLE.rar về, giải nén thành folder.
 - Vào folder AIR BATTLE , vào folder Debug, tìm và chạy file AIR BATTLE.exe để bắt đầu chơi.
 
-
+## LINK YOUTUBE : 
+https://youtu.be/21B0FujcbVE
 
 ## DISCRIPTION
 ### GAME DISCRIPTION AND INSTRUCTION :
