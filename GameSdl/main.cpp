@@ -542,7 +542,7 @@ again:
         score.MakeText(g_font_, g_screen);
         score.SetRect(30, 65);
 
-        if(time_val - iniTime > TIME_TO_WIN  && score_val < SCORE_TO_WIN && num_boss_die < EX_NUM_BOSS){
+        if(time_val - iniTime > TIME_TO_WIN  && (score_val < SCORE_TO_WIN || num_boss_die < EX_NUM_BOSS)){
             
                     int menu = SDLCommonFunc::MakeMenu3(g_screen, g_font_menu, score_val, gold_num);
                         if (menu == 0)
