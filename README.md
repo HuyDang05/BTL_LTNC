@@ -77,6 +77,7 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 - Tạo menu giúp game chân thực hơn : menu bắt đầu, menu hướng dẫn , menu thắng, menu thua.
 - Xứ lý việc bắn đạn, di chuyển ngang màn hình cho threat, khi bị tiêu diệt, threat sẽ được đặt vị trí ngẫu nhiên để xuất hiện trên màn hình.
 - Đối tượng Boss sẽ kế thừa từ đối tượng threat nhưng sẽ có tính nắng mới : máu nhiều hơn, cách di chuyển khác và nhanh hơn, đạn bắn nhanh hơn,...
+- Kế thừa từ lớp cơ sở.
    
 ### Nguồn tham khảo :
 
