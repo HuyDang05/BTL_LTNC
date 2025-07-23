@@ -6,25 +6,27 @@
 * [SEE ALSO](#see-also)
 * [CONCLUSION](#conclusion)
  ## INTRODUCTION
-- Họ và tên: 'Đặng Quang Huy - K68J - UET'
-- Mã sinh viên: 23020671
-- Bài tập lớn: AIR BATTLE (INT2215_52 - Lập trình nâng cao)
-## SET UP :
-- Truy cập vào link drive sau  https://drive.google.com/file/d/11CTW4Ws1uKX2mTCJGizQmrG9qtOG_tcW/view?usp=sharing 
-- Tải file AIR BATTLE.rar về, giải nén thành folder.
-- Vào folder AIR BATTLE , vào folder Debug, tìm và chạy file AIR BATTLE.exe để bắt đầu chơi.
+- Full name: Dang Quang Huy - K68J - UET  
+- Student ID: 23020671  
+- Project: AIR BATTLE (INT2215_52 - Advanced Programming)  
 
+## SETUP:
+- Access the following Google Drive link:  
+  https://drive.google.com/file/d/11CTW4Ws1uKX2mTCJGizQmrG9qtOG_tcW/view?usp=sharing  
+- Download the **AIR BATTLE.rar** file and extract it into a folder.  
+- Open the **AIR BATTLE** folder, navigate to the **Debug** subfolder, and run **AIR BATTLE.exe** to start playing.
 ## LINK YOUTUBE : 
 https://youtu.be/21B0FujcbVE
 
 ## DISCRIPTION
 ### GAME DISCRIPTION AND INSTRUCTION :
-- AIR BATTLE là một thể loại game Shoot 'em up (Shmup), người chơi sẽ điều khiển một đối tượng chính là một máy bay để tiêu diệt hết
-các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn có thêm điều kiện phụ liên quan đến thời gian và điểm số để tăng thêm sự gay cấn và tạo thử thách cho người chơi. Trên màn hình game cũng sẽ xuất hiện ngẫu nhiên những vật phẩm bổ trợ, người chơi khi ăn được một lượng nhất định sẽ nhận thêm 1 mạng sống.
-- Mối lần chơi , game sẽ random background tạo sự đa dạng , thích thú cho người chơi.
-- Game có đầy đủ các chức năng hỗ trợ người chơi , thoát game , xem mô tả cách chơi, sử dụng phím esc để dừng game, chơi lại ...
-- Có âm thanh nền phát trong suốt lúc chơi và các âm thanh về bắn đạn, vụ nổ gây cảm giác kích thích, hứng thú cho người chơi.
-- AIR BATTLE chắc chắn sẽ không khiến cho người chơi phải thất vọng với những tính năng, đồ hoạ cực kì hấp dẫn, sinh động.
+- **AIR BATTLE** is a shoot 'em up (Shmup) game where the player controls a fighter aircraft to destroy all enemy planes and the final boss.  
+  In addition to the main objective, the game also includes optional challenges based on time and score, adding more intensity and excitement.  
+  Random support items will occasionally appear on the screen — collecting enough of them grants the player an extra life.
+- In each session, the game randomly selects a background to create variety and enhance the player’s experience.
+- The game features all essential functions: pause/resume using the **ESC** key, restart the game, view gameplay instructions, and exit the game with ease.
+- Background music plays continuously throughout the game, along with engaging sound effects for shooting and explosions, adding to the excitement and immersion.
+- **AIR BATTLE** promises to deliver an enjoyable and dynamic gaming experience with its exciting features and vivid graphics.
 ## CONTROL
 | **KEYS** |    FUNCTION   |
 |:--------:|:-------------:|
@@ -36,19 +38,22 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 |     L    |  DART BULLET  |
 
 ## PREVIEW :
-### MENU BẮT ĐẦU :
-![a1](https://github.com/HuyDang05/My_Game/assets/161727773/e4c42436-e309-45ef-a8c0-5f8ef5c2c982)
-### MENU HƯỚNG DẪN :
-![a2](https://github.com/HuyDang05/My_Game/assets/161727773/4fe7d57f-9f92-477e-868c-422727b8e848)
-![a3](https://github.com/HuyDang05/My_Game/assets/161727773/e76c53bd-e8e4-4b1b-9c4e-5cef3052927c)
-### CHIẾN ĐẤU VỚI BOSS :
-![a6](https://github.com/HuyDang05/My_Game/assets/161727773/96d1f7c4-8689-414f-9804-e42be8e59a7a)
-### MENU THUA :
-![a4](https://github.com/HuyDang05/My_Game/assets/161727773/1cd84857-1f52-4714-ac55-83e86fa74863)
-### MENU THẮNG :
-![a5](https://github.com/HuyDang05/My_Game/assets/161727773/ced6f00c-ffa3-4f92-8205-31781ac45e6d)
+### MENU START :
+![a1](https://github.com/user-attachments/assets/265ae344-c3a6-40db-8e13-d919d92fa4ff)
+### GUIDE :
+![a2](https://github.com/user-attachments/assets/17b997e4-1130-4bf3-b18e-f02587f4c876)
+
+### FIGHT WITH BOSS :
+![a6](https://github.com/user-attachments/assets/b80b6234-d53f-47bb-9ab6-c7b789b2ba28)
+
+### DEFEAT :
+![a4](https://github.com/user-attachments/assets/a3d0a305-47b5-467a-9b8a-6dcd2369d351)
+
+### VICTORY :
+![a5](https://github.com/user-attachments/assets/9776b6ed-6328-41dc-8f54-61cf170155bc)
+
 ## GRAPHIC :
-### Các loại đạn 
+### BULLET 
 ![dartbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/7f9d4870-9b61-4c5a-8204-f592b9483d89)
 ![laserbl](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/391e5a32-a6cc-41a0-9cd3-1565d03de254)
 ![bl4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/bc340b9a-b545-4a67-8c6b-7d5443888d3a)
@@ -59,48 +64,45 @@ các máy bay và trùm cuối của quân địch. Bên cạnh đó, game còn 
 ![c2](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/4c50f4bb-cdf2-4811-a728-9d4842a9adbb)
 ### BOSS :
 ![c4](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/b3595259-b038-4470-9805-42bf75659317)
-### Vụ nổ :
+### EXPLOSION :
 ![expmain](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/51ff742b-ebfd-4347-92c8-cfeab0596d0a)
-### Vật phẩm hỗ trợ :
+### SUPPORT ITEM :
 ![gold](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/3be7b99c-a9e2-4941-83e6-c7a79bc4af0b)
-### Sinh mệnh :
+### LIFE :
 ![health](https://github.com/HuyDang05/BTL_LTNC/assets/161727773/26c91058-4f90-4887-a543-ffcd2c02d9e4)
 
-
 ## SEE ALSO
-### Các kỹ thuật sử dụng :
-- Thư viện SDL2.0, ngôn ngữ C++, IDE : Visual Studio Code.
-- Sử dụng kỹ thuật lập trình hướng đối tượng, tách file cpp và file header để dễ quản lý chương trình
-- Tạo đối tượng đa dạng : nhân vật chính, máy bay địch, máy bay boss địch, vật phẩm hỗ trợ, đạn bắn, text và HP của nhân vật chính.
-- Dùng các kiến thức toán học để xử lý va chạm giữa các đối tượng : đạn của nhân vật chính với địch, nhân vật chính với vật phẩm hỗ trợ, ...
-- Xử lý thời gian, điểm số thao tác chuột và bàn phím, âm thanh, hình ảnh, chữ và random background khi vào chơi.
-- Tạo menu giúp game chân thực hơn : menu bắt đầu, menu hướng dẫn , menu thắng, menu thua.
-- Xứ lý việc bắn đạn, di chuyển ngang màn hình cho threat, khi bị tiêu diệt, threat sẽ được đặt vị trí ngẫu nhiên để xuất hiện trên màn hình.
-- Đối tượng Boss sẽ kế thừa từ đối tượng threat nhưng sẽ có tính nắng mới : máu nhiều hơn, cách di chuyển khác và nhanh hơn, đạn bắn nhanh hơn,...
-- Kế thừa từ lớp cơ sở.
-   
-### Nguồn tham khảo :
-
-- Cách cài đặt SDL2.0 trên Visual Studio Code: tham khảo trên reddit, stack overflow và Lazy'Foo.
-- Cách sử dụng thư viện SDL2.0, quản lý chương trình: Thảo khảo trên Lazy'Foo và các video của cô Trần Thị Minh Châu,
- stack overflow, kênh youtube: Let's Make Games, Madsycode, Phát Triển Phần Mềm 123 A-Z.
-- Hình ảnh: tìm kiếm trên google và một số hình đơn giản tự design.
-- Âm thanh: Tự tra trên google, pixabay.com
-- Logic chính của game: tham khảo kênh youtube : Phát Triển Phần Mềm 123 A-Z và tự phát triển thêm ở các vật phẩm bổ trợ, đối tượng boss.
-menu, điều kiện phụ về thời gian và điểm số.
+### Technologies and Techniques Used:
+- Utilized the **SDL 2.0 library**, programmed in **C++**, and developed using **Visual Studio Code**.
+- Applied **Object-Oriented Programming (OOP)** principles, with separation between `.cpp` and `.h` files for better code organization and maintainability.
+- Created a variety of game objects: the main character, enemy planes, boss enemy, power-up items, bullets, text elements, and the main character's HP bar.
+- Applied mathematical concepts to handle **collision detection** between objects: bullets and enemies, the main character and support items, etc.
+- Handled **timing, scoring, mouse and keyboard interactions**, audio playback, rendering of images and text, and random background selection on game start.
+- Implemented a menu system to enhance game realism: **start menu, instruction/help menu, victory menu, and game over menu**.
+- Developed logic for **enemy shooting and horizontal movement**; when an enemy is defeated, it respawns at a random position on the screen.
+- Designed the **Boss object** as a subclass of the enemy (threat) object, with extended features: higher HP, different and faster movement, more rapid shooting, etc.
+- Utilized **class inheritance** from a base class to organize and extend game object behaviors.
+- 
+### References:
+- **Installing SDL 2.0 in Visual Studio Code**: Referenced guides and discussions on Reddit, Stack Overflow, and Lazy Foo’.
+- **Using the SDL 2.0 library and managing the program structure**: Referenced tutorials from Lazy Foo’, videos by Ms. Trần Thị Minh Châu, Stack Overflow, and YouTube channels such as Let's Make Games, Madsycode, and Phát Triển Phần Mềm 123 A-Z.
+- **Images**: Sourced from Google and some simple assets were self-designed.
+- **Audio**: Found via Google search and websites like [pixabay.com](https://pixabay.com).
+- **Core game logic**: Based on YouTube tutorials from Phát Triển Phần Mềm 123 A-Z, with further custom development for features like support items, boss objects, menu system, and additional gameplay conditions involving time and score.
 
 ## CONCLUSION
-- Cải thiện được rất nhiều kỹ năng trong việc tư duy logic, xử lý va chạm, viết code. 
-- Khả năng sáng tạo, lên ý tưởng, các kỹ năng về chỉnh sửa hình ảnh , âm thanh.
-- Học được cách setup môi trường, sử dụng thư viện ngoài.
-- Chương trình rất dễ để refactor cũng như update tính năng.
-- Học được cách thêm và sắp xếp các khối câu lệnh để chương trình chạy mượt mà, hợp lý, cách clean, tối ưu code và sử lý các mạch logic chính của game.
-- Biết thêm về thư viện SDL2 : cách sử dụng, các hàm để xử lý hình ảnh, âm thanh , chữ.
-### Hướng phát triển :
-- Cập nhật tính năng bảng xếp hạng, sau mỗi lần chơi người chơi sẽ được nhập tên để lưu lại kết quả chơi của mình.
-- Thêm nhiều loại vật phẩm hỗ trợ có tính năng khác nhau.
-- Thêm các chướng ngại vật và bom để tạo thử thách cho người chơi.
-- Thêm menu chọn độ khó  để người chơi có thể chọn tốc độ và số lượng địch tuỳ thích, phù hợp với khả năng chơi của mình.
-- Thêm chế độ 2 người chơi với nhau hoặc 2 người chơi với máy.
+- Significantly improved logical thinking, collision handling, and coding skills.
+- Enhanced creativity, idea development, and skills in editing images and audio.
+- Gained experience in setting up the development environment and working with external libraries.
+- The program is structured in a way that makes it easy to **refactor** and **add new features**.
+- Learned how to organize and structure code blocks for smooth and efficient performance, as well as how to write **clean**, **optimized**, and **maintainable** code, especially when handling core game logic.
+- Acquired deeper understanding of the **SDL2 library**, including functions for handling graphics, audio, and text.
+- 
+### Future Improvements:
+- Add a **leaderboard feature**, allowing players to enter their name and save their score after each game session.
+- Introduce more types of **power-up items** with different effects.
+- Add **obstacles and bombs** to increase the challenge and gameplay variety.
+- Implement a **difficulty selection menu**, enabling players to choose enemy speed and quantity based on their skill level.
+- Add a **two-player mode**, allowing two players to play together or compete against AI.
 
   
